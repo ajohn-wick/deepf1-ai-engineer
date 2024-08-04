@@ -55,6 +55,7 @@
 
 #chat-container {
   height: 600px;
+  background-color: #ffffff;
 }
 .chatApp {
   width: 100%;
@@ -64,7 +65,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 12px;
+  /* gap: 12px; */
   justify-content: center;
   /* padding-top: 12px; */
   /* width: 100%; */
@@ -78,8 +79,10 @@
   z-index: 10000; /* Add this line */
 
 
-  /* margin-top: 30px; */
 
+  .whiteBackground {
+    background-color: #ffffff;
+  }
   .webExperience {
       position: absolute;
       height: 90%;
@@ -255,7 +258,7 @@
           max-width: 840px;
           min-width: 350px;
           /* padding-left: 4px; */
-          padding-top: 12px;
+          /* padding-top: 12px; */
           width: 100%;
 
           & .prompt {

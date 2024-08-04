@@ -84,34 +84,35 @@ export class AWSBRChat {
     }
 
     buildWebExperience(webExperience) {
-        // const tmpl = `
-        //     <div class="webExperience">
-        //         <div class="header">
-        //             <div class="title">${webExperience.title}</div>
-        //             <div class="subtitle">${webExperience.subtitle}</div>
-        //         </div>
-        //         <div class="welcomeMessage">
-        //             <div class="conversation-thread">
-        //                 ${this.getMessageTemplate({
-        //     role: "assistant",
-        //     content: [{ text: webExperience.welcomeMessage }]
-        // })}
-        //             </div>
-        //         </div>
-        //     </div>
-        // `;
-        const tmpl = `
-            <div class="webExperience">
+        let tmpl = '';
+        if (this.config.ui.floatingWindow) {
+            tmpl = `<div class="webExperience whiteBackground">
+                <div class="header">
+                    <div class="title">${webExperience.title}</div>
+                    <div class="subtitle">${webExperience.subtitle}</div>
+                </div>
                 <div class="welcomeMessage">
                     <div class="conversation-thread">
                         ${this.getMessageTemplate({
-            role: "assistant",
-            content: [{ text: webExperience.welcomeMessage }]
-        })}
+                            role: "assistant",
+                            content: [{ text: webExperience.welcomeMessage }]
+                        })}
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
+        }
+        else {
+            tmpl = `<div class="webExperience">
+                    <div class="welcomeMessage">
+                        <div class="conversation-thread">
+                            ${this.getMessageTemplate({
+                                role: "assistant",
+                                content: [{ text: webExperience.welcomeMessage }]
+                            })}
+                        </div>
+                    </div>
+                </div>`;
+        }
 
         const range = document.createRange();
         const fragment = range.createContextualFragment(tmpl);
@@ -122,9 +123,13 @@ export class AWSBRChat {
     }
 
     buildChatWindow() {
+        let classNameAux = '';
+        if (this.config.ui.floatingWindow) {
+            classNameAux = 'whiteBackground';
+        }
         const tmpl = `
         <div id="chatApp" class="chatApp">
-            <div class="message-list">
+            <div class="message-list ${classNameAux}">
             <div class="conversation-thread">
                 <div id="messages">
                 <div></div>

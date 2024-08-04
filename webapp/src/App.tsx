@@ -56,30 +56,30 @@ function useAuthStatus() {
             new AWSBRChat({
                 auth: {
                     region: aws_exports.aws_project_region,
-                    // identityPoolId: aws_exports.aws_cognito_identity_pool_id,
+                    // identityPoolId: undefined,
                     // cognito: {
-                    //     userPoolId: aws_exports.aws_user_pools_id
-                    // }
+                    //     userPoolId: undefined
+                    // },
                     anonymous: {
-                    roleArn: "arn:aws:iam::119277175093:role/service-role/deepf1-cognito-guest-role"
+                        roleArn: "arn:aws:iam::119277175093:role/service-role/deepf1-cognito-guest-role"
                     }
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
                     modelId: "anthropic.claude-3-haiku-20240307-v1:0",
                     // agent: {
-                    // agentId: "DQETCU2U6U",
-                    // agentAliasId: "CU3KAEHMWY"
+                    // agentId: "",
+                    // agentAliasId: ""
                     // }
                 },
                 ui: {
                     logoUrl: "/bedrock_logo.png",
-                    floatingWindow: false,
+                    // floatingWindow: true,
                     containerId: 'chat-container',
                     webExperience: {
-                        // title: "DeepF1 - AI Strategy Assistant",
-                        // subtitle: "Our advanced AI model analyze race data to provide cutting-edge recommendations.",
-                        welcomeMessage: "DeepF1 - Our advanced AI model analyze race data to provide cutting-edge recommendations."
+                        title: "AI Strategy Assistant",
+                        subtitle: "Our advanced AI model analyze race data to provide cutting-edge recommendations.",
+                        welcomeMessage: "It's Lights Out and Away We Go!"
                     }
                 }
             });
