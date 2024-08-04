@@ -1,6 +1,12 @@
 const convict = require('convict');
 
 export const config = convict({
+    modelId: {
+        doc: 'The ID of the Amazon Bedrock Foundation Model',
+        format: String,
+        default: '',
+        env: 'BEDROCK_MODEL_ID',
+    },
     knowledgeBaseId: {
         doc: 'The ID of the Amazon Bedrock Knowledge Base',
         format: String,

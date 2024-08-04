@@ -10,10 +10,10 @@ import { DeepF1WebAppStack } from '../lib/webapp-stack';
 
 const stackProps = {
     env: {
-      account: process.env.AWS_ACCOUNT_ID as string,
-      region: process.env.AWS_REGION as string,
+        account: process.env.AWS_ACCOUNT_ID as string,
+        region: process.env.AWS_REGION as string,
     },
-  };
+};
 const app = new App();
 
 const genAIStack = new DeepF1GenAIStack(app, 'DeepF1GenAIStack', {

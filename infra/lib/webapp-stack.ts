@@ -5,7 +5,7 @@ import { Stack, StackProps, CfnOutput, Fn, Duration } from 'aws-cdk-lib';
 
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import { type LambdaProps, lambdaConfig } from './config';
+import { type LambdaProps, lambdaConfig, modelId } from './config';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { LambdaDestination } from 'aws-cdk-lib/aws-s3-notifications';
@@ -41,6 +41,7 @@ export class DeepF1WebAppStack extends Stack {
             environment: {
                 KNOWLEDGE_BASE_ARN: knowledgeBaseArn,
                 KNOWLEDGE_BASE_ID: knowledgeBaseId,
+                BEDROCK_MODEL_ID: modelId,
                 ...lambdaConfig,
             },
         };

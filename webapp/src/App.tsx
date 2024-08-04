@@ -63,11 +63,11 @@ function useAuthStatus() {
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
-                    // modelId: "anthropic.claude-3-haiku-20240307-v1:0"
-                    agent: {
-                        agentId: "VTSQWCDFWB",
-                        agentAliasId: "LRIWJT8Q4B"
-                    }
+                    modelId: "anthropic.claude-3-haiku-20240307-v1:0"
+                    // agent: {
+                    //     agentId: "",
+                    //     agentAliasId: ""
+                    // }
                 },
                 ui: {
                     logoUrl: "/bedrock_logo.png",
