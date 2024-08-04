@@ -1,0 +1,441 @@
+Track;Position;No;Driver;Team;Q1;Q2;Q3;Laps;Formula 1 Championship
+Bahrain;1;16;Charles Leclerc;Ferrari;1:31.471;1:30.932;1:30.558;15;2022
+Bahrain;2;1;Max Verstappen;Red Bull Racing RBPT;1:31.785;1:30.757;1:30.681;14;2022
+Bahrain;3;55;Carlos Sainz;Ferrari;1:31.567;1:30.787;1:30.687;15;2022
+Bahrain;4;11;Sergio Perez;Red Bull Racing RBPT;1:32.311;1:31.008;1:30.921;18;2022
+Bahrain;5;44;Lewis Hamilton;Mercedes;1:32.285;1:31.048;1:31.238;17;2022
+Bahrain;6;77;Valtteri Bottas;Alfa Romeo Ferrari;1:31.919;1:31.717;1:31.560;15;2022
+Bahrain;7;20;Kevin Magnussen;Haas Ferrari;1:31.955;1:31.461;1:31.808;12;2022
+Bahrain;8;14;Fernando Alonso;Alpine Renault;1:32.346;1:31.621;1:32.195;14;2022
+Bahrain;9;63;George Russell;Mercedes;1:32.269;1:31.252;1:32.216;17;2022
+Bahrain;10;10;Pierre Gasly;AlphaTauri RBPT;1:32.096;1:31.635;1:32.338;21;2022
+Bahrain;11;31;Esteban Ocon;Alpine Renault;1:32.041;1:31.782;;12;2022
+Bahrain;12;47;Mick Schumacher;Haas Ferrari;1:32.380;1:31.998;;11;2022
+Bahrain;13;4;Lando Norris;McLaren Mercedes;1:32.239;1:32.008;;14;2022
+Bahrain;14;23;Alexander Albon;Williams Mercedes;1:32.726;1:32.664;;13;2022
+Bahrain;15;24;Guanyu Zhou;Alfa Romeo Ferrari;1:32.493;1:33.543;;12;2022
+Bahrain;16;22;Yuki Tsunoda;AlphaTauri RBPT;1:32.750;;;8;2022
+Bahrain;17;27;Nico Hulkenberg;Aston Martin Aramco Mercedes;1:32.777;;;6;2022
+Bahrain;18;3;Daniel Ricciardo;McLaren Mercedes;1:32.945;;;8;2022
+Bahrain;19;18;Lance Stroll;Aston Martin Aramco Mercedes;1:33.032;;;6;2022
+Bahrain;20;6;Nicholas Latifi;Williams Mercedes;1:33.634;;;8;2022
+Saudi Arabia;1;11;Sergio Perez;Red Bull Racing RBPT;1:29.705;1:28.924;1:28.200;20;2022
+Saudi Arabia;2;16;Charles Leclerc;Ferrari;1:29.039;1:28.780;1:28.225;22;2022
+Saudi Arabia;3;55;Carlos Sainz;Ferrari;1:28.855;1:28.6886;1:28.402;23;2022
+Saudi Arabia;4;1;Max Verstappen;Red Bull Racing RBPT;1:28.928;1:28.945;1:28.461;22;2022
+Saudi Arabia;5;31;Esteban Ocon;Alpine Renault;1:30.093;1:29.584;1:29.068;19;2022
+Saudi Arabia;6;63;George Russell;Mercedes;1:29.680;1:29.618;1:29.104;21;2022
+Saudi Arabia;7;14;Fernando Alonso;Alpine Renault;1:29.978;1:29.295;1:29.147;20;2022
+Saudi Arabia;8;77;Valtteri Bottas;Alfa Romeo Ferrari;1:29.683;1:29.404;1:29.183;22;2022
+Saudi Arabia;9;10;Pierre Gasly;AlphaTauri RBPT;1:29.891;1:29.418;1:29.254;22;2022
+Saudi Arabia;10;20;Kevin Magnussen;Haas Ferrari;1:29.831;1:29.546;1:29.588;24;2022
+Saudi Arabia;11;4;Lando Norris;McLaren Mercedes;1:29.957;1:29.651;;16;2022
+Saudi Arabia;12;3;Daniel Ricciardo;McLaren Mercedes;1:30.009;1:29.773;;17;2022
+Saudi Arabia;13;24;Guanyu Zhou;Alfa Romeo Ferrari;1:29.978;1:29.819;;17;2022
+Saudi Arabia;14;47;Mick Schumacher;Haas Ferrari;1:30.167;1:29.920;;13;2022
+Saudi Arabia;15;18;Lance Stroll;Aston Martin Aramco Mercedes;1:30.256;1:31.009;;15;2022
+Saudi Arabia;16;44;Lewis Hamilton;Mercedes;1:30.343;;;11;2022
+Saudi Arabia;17;23;Alexander Albon;Williams Mercedes;1:30.492;;;9;2022
+Saudi Arabia;18;27;Nico Hulkenberg;Aston Martin Aramco Mercedes;1:30.543;;;10;2022
+Saudi Arabia;19;6;Nicholas Latifi;Williams Mercedes;1:31.817;;;4;2022
+Saudi Arabia;NC;22;Yuki Tsunoda;AlphaTauri RBPT;DNS;;;2;2022
+Australia;1;16;Charles Leclerc;Ferrari;1:18.881;1:18.606;1:17.868;21;2022
+Australia;2;1;Max Verstappen;Red Bull Racing RBPT;0,06087963;1:18.611;1:18.154;21;2022
+Australia;3;11;Sergio Perez;Red Bull Racing RBPT;1:18.834;1:18.340;1:18.240;21;2022
+Australia;4;4;Lando Norris;McLaren Mercedes;1:19.280;1:19.066;1:18.703;20;2022
+Australia;5;44;Lewis Hamilton;Mercedes;1:19.401;1:19.106;1:18.825;28;2022
+Australia;6;63;George Russell;Mercedes;1:19.405;1:19.076;1:18.933;26;2022
+Australia;7;3;Daniel Ricciardo;McLaren Mercedes;1:19.665;1:19.130;1:19.032;22;2022
+Australia;8;31;Esteban Ocon;Alpine Renault;1:19.605;1:19.136;1:19.061;23;2022
+Australia;9;55;Carlos Sainz;Ferrari;1:18.983;1:18.469;1:19.408;22;2022
+Australia;10;14;Fernando Alonso;Alpine Renault;1:19.192;1:18.815;DNF;15;2022
+Australia;11;10;Pierre Gasly;AlphaTauri RBPT;1:19.580;1:19.226;;19;2022
+Australia;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:19.251;1:19.410;;13;2022
+Australia;13;22;Yuki Tsunoda;AlphaTauri RBPT;1:19.742;1:19.424;;17;2022
+Australia;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:19.910;1:20.155;;16;2022
+Australia;15;47;Mick Schumacher;Haas Ferrari;1:20.104;1:20.465;;19;2022
+Australia;NC;23;Alexander Albon;Williams Mercedes;1:20.135;;;11;2022
+Australia;16;20;Kevin Magnussen;Haas Ferrari;1:20.254;;;11;2022
+Australia;17;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:21.149;;;3;2022
+Australia;18;6;Nicholas Latifi;Williams Mercedes;1:21.372;;;8;2022
+Australia;NC;18;Lance Stroll;Aston Martin Aramco Mercedes;DNF;;;2;2022
+Emilia Romagna;1;1;Max Verstappen;Red Bull Racing RBPT;1:19.295;1:18.793;1:27.999;22;2022
+Emilia Romagna;2;16;Charles Leclerc;Ferrari;1:18.796;1:19.584;1:28.778;22;2022
+Emilia Romagna;3;4;Lando Norris;McLaren Mercedes;1:20.168;1:19.294;1:29.131;22;2022
+Emilia Romagna;4;20;Kevin Magnussen;Haas Ferrari;1:20.147;1:19.902;1:29.164;21;2022
+Emilia Romagna;5;14;Fernando Alonso;Alpine Renault;1:20.198;1:19.595;1:29.202;26;2022
+Emilia Romagna;6;3;Daniel Ricciardo;McLaren Mercedes;1:19.980;1:20.031;1:29.742;21;2022
+Emilia Romagna;7;11;Sergio Perez;Red Bull Racing RBPT;1:19.773;1:19.296;1:29.808;25;2022
+Emilia Romagna;8;77;Valtteri Bottas;Alfa Romeo Ferrari;1:20.419;1:20.192;1:30.439;23;2022
+Emilia Romagna;9;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:20.364;1:19.957;1:31.062;25;2022
+Emilia Romagna;10;55;Carlos Sainz;Ferrari;1:19.305;1:18.990;;13;2022
+Emilia Romagna;11;63;George Russell;Mercedes;1:20.383;1:20.757;;16;2022
+Emilia Romagna;12;47;Mick Schumacher;Haas Ferrari;1:20.422;1:20.916;;16;2022
+Emilia Romagna;13;44;Lewis Hamilton;Mercedes;1:20.470;1:21.138;;15;2022
+Emilia Romagna;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:19.370;1:21.434;;16;2022
+Emilia Romagna;15;18;Lance Stroll;Aston Martin Aramco Mercedes;1:20.342;1:28.119;;14;2022
+Emilia Romagna;16;22;Yuki Tsunoda;AlphaTauri RBPT;1:20.474;;;11;2022
+Emilia Romagna;17;10;Pierre Gasly;AlphaTauri RBPT;1:20.732;;;11;2022
+Emilia Romagna;18;6;Nicholas Latifi;Williams Mercedes;1:21.971;;;13;2022
+Emilia Romagna;19;31;Esteban Ocon;Alpine Renault;1:22.338;;;9;2022
+Emilia Romagna;NC;23;Alexander Albon;Williams Mercedes;DNF;;;3;2022
+Miami;1;16;Charles Leclerc;Ferrari;1:29.474;1:29.130;1:28.796;25;2022
+Miami;2;55;Carlos Sainz;Ferrari;1:30.079;1:29.729;1:28.986;26;2022
+Miami;3;1;Max Verstappen;Red Bull Racing RBPT;1:28.836;1:29.202;1:28.991;18;2022
+Miami;4;11;Sergio Perez;Red Bull Racing RBPT;1:30.055;1:29.673;1:29.036;21;2022
+Miami;5;77;Valtteri Bottas;Alfa Romeo Ferrari;1:30.845;1:29.751;1:29.475;20;2022
+Miami;6;44;Lewis Hamilton;Mercedes;1:30.388;1:29.797;1:29.625;21;2022
+Miami;7;10;Pierre Gasly;AlphaTauri RBPT;1:30.779;1:30.128;1:29.690;22;2022
+Miami;8;4;Lando Norris;McLaren Mercedes;1:30.761;1:29.634;1:29.750;22;2022
+Miami;9;22;Yuki Tsunoda;AlphaTauri RBPT;1:30.485;1:30.031;1:29.932;21;2022
+Miami;10;18;Lance Stroll;Aston Martin Aramco Mercedes;1:30.441;1:29.996;1:30.676;21;2022
+Miami;11;14;Fernando Alonso;Alpine Renault;1:30.407;1:30.160;;14;2022
+Miami;12;63;George Russell;Mercedes;1:30.490;1:30.173;;15;2022
+Miami;13;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:30.677;1:30.214;;15;2022
+Miami;14;3;Daniel Ricciardo;McLaren Mercedes;1:30.583;1:30.310;;15;2022
+Miami;15;47;Mick Schumacher;Haas Ferrari;1:30.645;1:30.423;;19;2022
+Miami;16;20;Kevin Magnussen;Haas Ferrari;1:30.975;;;11;2022
+Miami;17;24;Guanyu Zhou;Alfa Romeo Ferrari;1:31.020;;;9;2022
+Miami;18;23;Alexander Albon;Williams Mercedes;1:31.266;;;10;2022
+Miami;19;6;Nicholas Latifi;Williams Mercedes;1:31.325;;;10;2022
+Miami;NC;31;Esteban Ocon;Alpine Renault;DNS;;;0;2022
+Spain;1;16;Charles Leclerc;Ferrari;1:19.861;1:19.969;1:18.750;12;2022
+Spain;2;1;Max Verstappen;Red Bull Racing RBPT;1:20.091;1:19.219;1:19.073;16;2022
+Spain;3;55;Carlos Sainz;Ferrari;1:19.892;1:19.453;1:19.166;16;2022
+Spain;4;63;George Russell;Mercedes;1:20.218;1:19.470;1:19.393;14;2022
+Spain;5;11;Sergio Perez;Red Bull Racing RBPT;1:20.447;1:19.830;1:19.420;17;2022
+Spain;6;44;Lewis Hamilton;Mercedes;1:20.252;1:19.794;1:19.512;15;2022
+Spain;7;77;Valtteri Bottas;Alfa Romeo Ferrari;1:20.355;1:20.053;1:19.608;18;2022
+Spain;8;20;Kevin Magnussen;Haas Ferrari;1:20.227;1:19.810;1:19.682;18;2022
+Spain;9;3;Daniel Ricciardo;McLaren Mercedes;1:20.549;1:20.287;1:20.297;15;2022
+Spain;10;47;Mick Schumacher;Haas Ferrari;1:20.683;1:20.436;1:20.368;18;2022
+Spain;11;4;Lando Norris;McLaren Mercedes;1:20.838;1:20.471;;12;2022
+Spain;12;31;Esteban Ocon;Alpine Renault;1:20.880;1:20.638;;9;2022
+Spain;13;22;Yuki Tsunoda;AlphaTauri RBPT;1:20.707;1:20.639;;15;2022
+Spain;14;10;Pierre Gasly;AlphaTauri RBPT;1:20.719;1:20.861;;15;2022
+Spain;15;24;Guanyu Zhou;Alfa Romeo Ferrari;1:20.476;1:21.094;;15;2022
+Spain;16;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:20.954;;;6;2022
+Spain;17;14;Fernando Alonso;Alpine Renault;1:21.043;;;5;2022
+Spain;18;18;Lance Stroll;Aston Martin Aramco Mercedes;1:21.418;;;6;2022
+Spain;19;23;Alexander Albon;Williams Mercedes;1:21.645;;;6;2022
+Spain;20;6;Nicholas Latifi;Williams Mercedes;1:21.915;;;9;2022
+Monaco;1;16;Charles Leclerc;Ferrari;1:12.569;1:11.864;1:11.376;24;2022
+Monaco;2;55;Carlos Sainz;Ferrari;1:12.616;1:12.074;1:11.601;25;2022
+Monaco;3;11;Sergio Perez;Red Bull Racing RBPT;1:13.004;1:11.954;1:11.629;25;2022
+Monaco;4;1;Max Verstappen;Red Bull Racing RBPT;1:12.993;1:12.117;1:11.666;25;2022
+Monaco;5;4;Lando Norris;McLaren Mercedes;1:12.927;1:12.266;1:11.849;27;2022
+Monaco;6;63;George Russell;Mercedes;1:12.787;1:12.617;1:12.112;27;2022
+Monaco;7;14;Fernando Alonso;Alpine Renault;1:13.394;1:12.688;1:12.247;22;2022
+Monaco;8;44;Lewis Hamilton;Mercedes;1:13.444;1:12.595;1:12.560;29;2022
+Monaco;9;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:13.313;1:12.613;1:12.732;28;2022
+Monaco;10;31;Esteban Ocon;Alpine Renault;1:12.848;1:12.528;1:13.047;22;2022
+Monaco;11;22;Yuki Tsunoda;AlphaTauri RBPT;1:13.110;1:12.797;;20;2022
+Monaco;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:13.541;1:12.909;;17;2022
+Monaco;13;20;Kevin Magnussen;Haas Ferrari;1:13.069;1:12.921;;20;2022
+Monaco;14;3;Daniel Ricciardo;McLaren Mercedes;1:13.338;1:12.964;;21;2022
+Monaco;15;47;Mick Schumacher;Haas Ferrari;1:13.469;1:13.081;;17;2022
+Monaco;16;23;Alexander Albon;Williams Mercedes;1:13.611;;;14;2022
+Monaco;17;10;Pierre Gasly;AlphaTauri RBPT;1:13.660;;;10;2022
+Monaco;18;18;Lance Stroll;Aston Martin Aramco Mercedes;1:13.678;;;11;2022
+Monaco;19;6;Nicholas Latifi;Williams Mercedes;1:14.403;;;13;2022
+Monaco;20;24;Guanyu Zhou;Alfa Romeo Ferrari;1:15.606;;;9;2022
+Azerbaijan;1;16;Charles Leclerc;Ferrari;1:42.865;1:42.046;1:41.359;19;2022
+Azerbaijan;2;11;Sergio Perez;Red Bull Racing RBPT;1:42.733;1:41.955;1:41.641;18;2022
+Azerbaijan;3;1;Max Verstappen;Red Bull Racing RBPT;1:42.722;1:42.227;1:41.706;19;2022
+Azerbaijan;4;55;Carlos Sainz;Ferrari;1:42.957;1:42.088;1:41.814;19;2022
+Azerbaijan;5;63;George Russell;Mercedes;1:43.754;1:43.281;1:42.712;23;2022
+Azerbaijan;6;10;Pierre Gasly;AlphaTauri RBPT;1:43.268;1:43.129;1:42.845;23;2022
+Azerbaijan;7;44;Lewis Hamilton;Mercedes;1:43.939;1:43.182;1:42.924;22;2022
+Azerbaijan;8;22;Yuki Tsunoda;AlphaTauri RBPT;1:43.595;1:43.376;1:43.056;22;2022
+Azerbaijan;9;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:43.279;1:43.268;1:43.091;18;2022
+Azerbaijan;10;14;Fernando Alonso;Alpine Renault;1:44.083;1:43.360;1:43.173;20;2022
+Azerbaijan;11;4;Lando Norris;McLaren Mercedes;1:44.237;1:43.398;;16;2022
+Azerbaijan;12;3;Daniel Ricciardo;McLaren Mercedes;1:44.437;1:43.574;;17;2022
+Azerbaijan;13;31;Esteban Ocon;Alpine Renault;1:43.903;1:43.585;;13;2022
+Azerbaijan;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:43.777;1:43.790;;13;2022
+Azerbaijan;15;77;Valtteri Bottas;Alfa Romeo Ferrari;1:44.478;1:44.444;;13;2022
+Azerbaijan;16;20;Kevin Magnussen;Haas Ferrari;1:44.643;;;9;2022
+Azerbaijan;17;23;Alexander Albon;Williams Mercedes;1:44.719;;;9;2022
+Azerbaijan;18;6;Nicholas Latifi;Williams Mercedes;1:45.367;;;8;2022
+Azerbaijan;19;18;Lance Stroll;Aston Martin Aramco Mercedes;1:45.371;;;7;2022
+Azerbaijan;20;47;Mick Schumacher;Haas Ferrari;1:45.775;;;9;2022
+Canada;1;1;Max Verstappen;Red Bull Racing RBPT;1:32.219;1:23.746;1:21.299;30;2022
+Canada;2;14;Fernando Alonso;Alpine Renault;1:32.277;1:24.848;1:21.944;29;2022
+Canada;3;55;Carlos Sainz;Ferrari;1:32.781;1:25.197;1:22.096;29;2022
+Canada;4;44;Lewis Hamilton;Mercedes;1:33.841;1:25.543;1:22.891;31;2022
+Canada;5;20;Kevin Magnussen;Haas Ferrari;1:32.957;1:26.254;1:22.960;31;2022
+Canada;6;47;Mick Schumacher;Haas Ferrari;1:33.707;1:25.684;1:23.356;31;2022
+Canada;7;31;Esteban Ocon;Alpine Renault;1:33.012;1:26.135;1:23.529;30;2022
+Canada;8;63;George Russell;Mercedes;1:33.160;1:24.950;1:23.557;30;2022
+Canada;9;3;Daniel Ricciardo;McLaren Mercedes;1:33.636;1:26.375;1:23.749;30;2022
+Canada;10;24;Guanyu Zhou;Alfa Romeo Ferrari;1:33.692;1:26.116;1:24.030;31;2022
+Canada;11;77;Valtteri Bottas;Alfa Romeo Ferrari;1:33.689;1:26.788;;21;2022
+Canada;12;23;Alexander Albon;Williams Mercedes;1:34.047;1:26.858;;21;2022
+Canada;13;11;Sergio Perez;Red Bull Racing RBPT;1:33.929;1:33.127;;14;2022
+Canada;14;4;Lando Norris;McLaren Mercedes;1:34.066;DNF;;15;2022
+Canada;15;16;Charles Leclerc;Ferrari;1:33.008;;;10;2022
+Canada;16;10;Pierre Gasly;AlphaTauri RBPT;1:34.492;;;11;2022
+Canada;17;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:34.512;;;12;2022
+Canada;18;18;Lance Stroll;Aston Martin Aramco Mercedes;1:35.532;;;11;2022
+Canada;19;6;Nicholas Latifi;Williams Mercedes;1:35.660;;;11;2022
+Canada;20;22;Yuki Tsunoda;AlphaTauri RBPT;1:36.575;;;4;2022
+Great Britain;1;55;Carlos Sainz;Ferrari;1:40.190;1:41.602;1:40.983;26;2022
+Great Britain;2;1;Max Verstappen;Red Bull Racing RBPT;1:39.129;1:40.655;1:41.055;24;2022
+Great Britain;3;16;Charles Leclerc;Ferrari;1:39.846;1:41.247;1:41.298;26;2022
+Great Britain;4;11;Sergio Perez;Red Bull Racing RBPT;1:40.521;1:42.513;1:41.616;26;2022
+Great Britain;5;44;Lewis Hamilton;Mercedes;1:40.428;1:41.062;1:41.995;23;2022
+Great Britain;6;4;Lando Norris;McLaren Mercedes;1:41.515;1:41.821;1:42.084;26;2022
+Great Britain;7;14;Fernando Alonso;Alpine Renault;1:41.598;1:42.209;1:42.116;23;2022
+Great Britain;8;63;George Russell;Mercedes;1:40.028;1:41.725;1:42.161;23;2022
+Great Britain;9;24;Guanyu Zhou;Alfa Romeo Ferrari;1:40.791;1:42.640;1:42.719;28;2022
+Great Britain;10;6;Nicholas Latifi;Williams Mercedes;1:41.998;1:43.273;2:03.095;24;2022
+Great Britain;11;10;Pierre Gasly;AlphaTauri RBPT;1:41.680;1:43.702;;19;2022
+Great Britain;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:41.396;1:44.232;;20;2022
+Great Britain;13;22;Yuki Tsunoda;AlphaTauri RBPT;1:41.893;1:44.311;;19;2022
+Great Britain;14;3;Daniel Ricciardo;McLaren Mercedes;1:41.933;1:44.355;;18;2022
+Great Britain;15;31;Esteban Ocon;Alpine Renault;1:41.730;1:45.190;;17;2022
+Great Britain;16;23;Alexander Albon;Williams Mercedes;1:42.078;;;11;2022
+Great Britain;17;20;Kevin Magnussen;Haas Ferrari;1:42.159;;;11;2022
+Great Britain;18;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:42.666;;;9;2022
+Great Britain;19;47;Mick Schumacher;Haas Ferrari;1:42.708;;;11;2022
+Great Britain;20;18;Lance Stroll;Aston Martin Aramco Mercedes;1:43.430;;;10;2022
+Austria;1;1;Max Verstappen;Red Bull Racing RBPT;1:05.852;1:05.374;1:04.984;19;2022
+Austria;2;16;Charles Leclerc;Ferrari;1:05.419;1:05.287;1:05.013;26;2022
+Austria;3;55;Carlos Sainz;Ferrari;1:05.660;1:05.576;1:05.066;26;2022
+Austria;4;63;George Russell;Mercedes;1:06.235;1:05.697;1:05.431;24;2022
+Austria;5;31;Esteban Ocon;Alpine Renault;1:06.468;1:05.993;1:05.726;27;2022
+Austria;6;20;Kevin Magnussen;Haas Ferrari;1:06.366;1:05.894;1:05.879;22;2022
+Austria;7;47;Mick Schumacher;Haas Ferrari;1:06.405;1:06.151;1:06.011;22;2022
+Austria;8;14;Fernando Alonso;Alpine Renault;1:06.016;1:06.082;1:06.103;22;2022
+Austria;9;44;Lewis Hamilton;Mercedes;1:06.079;1:05.475;1:13.151;20;2022
+Austria;10;10;Pierre Gasly;AlphaTauri RBPT;1:06.589;1:06.160;;20;2022
+Austria;11;23;Alexander Albon;Williams Mercedes;1:06.516;1:06.230;;15;2022
+Austria;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:06.442;1:06.319;;14;2022
+Austria;13;11;Sergio Perez;Red Bull Racing RBPT;1:06.143;1:06.458;;24;2022
+Austria;14;22;Yuki Tsunoda;AlphaTauri RBPT;1:06.463;1:06.851;;19;2022
+Austria;15;4;Lando Norris;McLaren Mercedes;1:06.330;1:25.847;;19;2022
+Austria;16;3;Daniel Ricciardo;McLaren Mercedes;1:06.613;;;10;2022
+Austria;17;18;Lance Stroll;Aston Martin Aramco Mercedes;1:06.847;;;12;2022
+Austria;18;24;Guanyu Zhou;Alfa Romeo Ferrari;1:06.901;;;9;2022
+Austria;19;6;Nicholas Latifi;Williams Mercedes;1:07.003;;;9;2022
+Austria;20;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:07.083;;;12;2022
+France;1;16;Charles Leclerc;Ferrari;1:31.727;1:31.216;1:30.872;17;2022
+France;2;1;Max Verstappen;Red Bull Racing RBPT;1:31.891;1:31.990;1:31.176;14;2022
+France;3;11;Sergio Perez;Red Bull Racing RBPT;1:32.354;1:32.120;1:31.335;20;2022
+France;4;44;Lewis Hamilton;Mercedes;1:33.041;1:32.274;1:31.765;19;2022
+France;5;4;Lando Norris;McLaren Mercedes;1:32.672;1:32.777;1:32.032;14;2022
+France;6;63;George Russell;Mercedes;1:33.109;1:32.633;1:32.131;20;2022
+France;7;14;Fernando Alonso;Alpine Renault;1:32.819;1:32.631;1:32.552;17;2022
+France;8;22;Yuki Tsunoda;AlphaTauri RBPT;1:33.394;1:32.836;1:32.780;20;2022
+France;9;55;Carlos Sainz;Ferrari;1:32.297;1:31.081;DNF;10;2022
+France;10;20;Kevin Magnussen;Haas Ferrari;1:32.756;1:32.649;;9;2022
+France;11;3;Daniel Ricciardo;McLaren Mercedes;1:33.404;1:32.922;;12;2022
+France;12;31;Esteban Ocon;Alpine Renault;1:33.346;1:33.048;;12;2022
+France;13;77;Valtteri Bottas;Alfa Romeo Ferrari;1:33.034;1:33.052;;13;2022
+France;14;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:33.285;1:33.276;;15;2022
+France;15;23;Alexander Albon;Williams Mercedes;1:33.423;1:33.307;;11;2022
+France;16;10;Pierre Gasly;AlphaTauri RBPT;1:33.439;;;7;2022
+France;17;18;Lance Stroll;Aston Martin Aramco Mercedes;1:33.439;;;9;2022
+France;18;24;Guanyu Zhou;Alfa Romeo Ferrari;1:33.674;;;8;2022
+France;19;47;Mick Schumacher;Haas Ferrari;1:33.701;;;9;2022
+France;20;6;Nicholas Latifi;Williams Mercedes;1:33.794;;;6;2022
+Hungary;1;63;George Russell;Mercedes;1:18.407;1:18.154;1:17.377;23;2022
+Hungary;2;55;Carlos Sainz;Ferrari;1:18.434;1:17.946;1:17.421;22;2022
+Hungary;3;16;Charles Leclerc;Ferrari;1:18.806;1:17.768;1:17.567;22;2022
+Hungary;4;4;Lando Norris;McLaren Mercedes;1:18.653;1:18.121;1:17.769;19;2022
+Hungary;5;31;Esteban Ocon;Alpine Renault;1:18.866;1:18.216;1:18.018;20;2022
+Hungary;6;14;Fernando Alonso;Alpine Renault;1:18.716;1:17.904;1:18.078;17;2022
+Hungary;7;44;Lewis Hamilton;Mercedes;1:18.374;1:18.035;1:18.142;21;2022
+Hungary;8;77;Valtteri Bottas;Alfa Romeo Ferrari;1:18.935;1:18.445;1:18.157;20;2022
+Hungary;9;3;Daniel Ricciardo;McLaren Mercedes;1:18.775;1:18.198;1:18.379;19;2022
+Hungary;10;1;Max Verstappen;Red Bull Racing RBPT;1:18.509;1:17.703;1:18.823;21;2022
+Hungary;11;11;Sergio Perez;Red Bull Racing RBPT;1:19.118;1:18.516;;16;2022
+Hungary;12;24;Guanyu Zhou;Alfa Romeo Ferrari;1:18.973;1:18.573;;16;2022
+Hungary;13;20;Kevin Magnussen;Haas Ferrari;1:18.993;1:18.825;;18;2022
+Hungary;14;18;Lance Stroll;Aston Martin Aramco Mercedes;1:19.205;1:19.137;;16;2022
+Hungary;15;47;Mick Schumacher;Haas Ferrari;1:19.164;1:19.202;;16;2022
+Hungary;16;22;Yuki Tsunoda;AlphaTauri RBPT;1:19.240;;;9;2022
+Hungary;17;23;Alexander Albon;Williams Mercedes;1:19.256;;;10;2022
+Hungary;18;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:19.273;;;10;2022
+Hungary;19;10;Pierre Gasly;AlphaTauri RBPT;1:19.527;;;9;2022
+Hungary;20;6;Nicholas Latifi;Williams Mercedes;1:19.570;;;10;2022
+Belgium;1;1;Max Verstappen;Red Bull Racing RBPT;1:44.581;1:44.723;1:43.665;9;2022
+Belgium;2;55;Carlos Sainz;Ferrari;1:45.050;1:45.418;1:44.297;14;2022
+Belgium;3;11;Sergio Perez;Red Bull Racing RBPT;1:45.377;1:44.794;1:44.462;12;2022
+Belgium;4;16;Charles Leclerc;Ferrari;1:45.572;1:44.551;1:44.553;14;2022
+Belgium;5;31;Esteban Ocon;Alpine Renault;1:46.039;1:45.475;1:45.180;15;2022
+Belgium;6;14;Fernando Alonso;Alpine Renault;1:46.075;1:45.552;1:45.368;16;2022
+Belgium;7;44;Lewis Hamilton;Mercedes;1:45.736;1:45.420;1:45.503;20;2022
+Belgium;8;63;George Russell;Mercedes;1:45.650;1:45.461;1:45.776;20;2022
+Belgium;9;23;Alexander Albon;Williams Mercedes;1:45.672;1:45.675;1:45.837;18;2022
+Belgium;10;4;Lando Norris;McLaren Mercedes;1:45.745;1:45.603;1:46.178;14;2022
+Belgium;11;3;Daniel Ricciardo;McLaren Mercedes;1:46.212;1:45.767;;9;2022
+Belgium;12;10;Pierre Gasly;AlphaTauri RBPT;1:46.183;1:45.827;;12;2022
+Belgium;13;24;Guanyu Zhou;Alfa Romeo Ferrari;1:46.178;1:46.085;;12;2022
+Belgium;14;18;Lance Stroll;Aston Martin Aramco Mercedes;1:46.256;1:46.611;;12;2022
+Belgium;15;47;Mick Schumacher;Haas Ferrari;1:46.342;1:47.718;;13;2022
+Belgium;16;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:46.344;;;6;2022
+Belgium;17;6;Nicholas Latifi;Williams Mercedes;1:46.401;;;7;2022
+Belgium;18;20;Kevin Magnussen;Haas Ferrari;1:46.557;;;6;2022
+Belgium;19;22;Yuki Tsunoda;AlphaTauri RBPT;1:46.692;;;6;2022
+Belgium;20;77;Valtteri Bottas;Alfa Romeo Ferrari;1:47.866;;;5;2022
+Netherlands;1;1;Max Verstappen;Red Bull Racing RBPT;1:11.317;1:10.927;1:10.342;12;2022
+Netherlands;2;16;Charles Leclerc;Ferrari;1:11.443;1:10.988;1:10.363;18;2022
+Netherlands;3;55;Carlos Sainz;Ferrari;1:11.767;1:10.814;1:10.434;18;2022
+Netherlands;4;44;Lewis Hamilton;Mercedes;1:11.331;1:11.075;1:10.648;18;2022
+Netherlands;5;11;Sergio Perez;Red Bull Racing RBPT;1:11.641;1:11.314;1:11.077;19;2022
+Netherlands;6;63;George Russell;Mercedes;1:11.561;1:10.824;1:11.147;18;2022
+Netherlands;7;4;Lando Norris;McLaren Mercedes;1:11.556;1:11.116;1:11.174;18;2022
+Netherlands;8;47;Mick Schumacher;Haas Ferrari;1:11.741;1:11.420;1:11.442;21;2022
+Netherlands;9;22;Yuki Tsunoda;AlphaTauri RBPT;1:11.427;1:11.428;1:12.556;21;2022
+Netherlands;10;18;Lance Stroll;Aston Martin Aramco Mercedes;1:11.568;1:11.416;;14;2022
+Netherlands;11;10;Pierre Gasly;AlphaTauri RBPT;1:11.705;1:11.512;;15;2022
+Netherlands;12;31;Esteban Ocon;Alpine Renault;1:11.748;1:11.605;;12;2022
+Netherlands;13;14;Fernando Alonso;Alpine Renault;1:11.667;1:11.613;;11;2022
+Netherlands;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:11.826;1:11.704;;15;2022
+Netherlands;15;23;Alexander Albon;Williams Mercedes;1:11.695;1:11.802;;16;2022
+Netherlands;16;77;Valtteri Bottas;Alfa Romeo Ferrari;1:11.961;;;9;2022
+Netherlands;17;3;Daniel Ricciardo;McLaren Mercedes;1:12.081;;;8;2022
+Netherlands;18;20;Kevin Magnussen;Haas Ferrari;1:12.319;;;9;2022
+Netherlands;19;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:12.391;;;8;2022
+Netherlands;20;6;Nicholas Latifi;Williams Mercedes;1:13.353;;;5;2022
+Italy;1;16;Charles Leclerc;Ferrari;1:21.280;1:21.208;1:20.161;14;2022
+Italy;2;1;Max Verstappen;Red Bull Racing RBPT;1:20.922;1:21.265;1:20.306;16;2022
+Italy;3;55;Carlos Sainz;Ferrari;1:21.348;1:20.878;1:20.429;13;2022
+Italy;4;11;Sergio Perez;Red Bull Racing RBPT;1:21.495;1:21.358;1:21.206;15;2022
+Italy;5;44;Lewis Hamilton;Mercedes;1:22.048;1:21.708;1:21.524;17;2022
+Italy;6;63;George Russell;Mercedes;1:21.785;1:21.747;1:21.542;17;2022
+Italy;7;4;Lando Norris;McLaren Mercedes;1:22.130;1:21.831;1:21.584;19;2022
+Italy;8;3;Daniel Ricciardo;McLaren Mercedes;1:22.139;1:21.855;1:21.925;20;2022
+Italy;9;10;Pierre Gasly;AlphaTauri RBPT;1:22.010;1:22.062;1:22.648;18;2022
+Italy;10;14;Fernando Alonso;Alpine Renault;1:22.089;1:21.861;;17;2022
+Italy;11;31;Esteban Ocon;Alpine Renault;1:22.166;1:22.130;;12;2022
+Italy;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:22.254;1:22.235;;12;2022
+Italy;13;45;Nyck De Vries;Williams Mercedes;1:22.567;1:22.471;;13;2022
+Italy;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:22.003;1:22.577;;12;2022
+Italy;15;22;Yuki Tsunoda;AlphaTauri RBPT;1:22.020;;;6;2022
+Italy;16;6;Nicholas Latifi;Williams Mercedes;1:22.587;;;7;2022
+Italy;17;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:22.636;;;7;2022
+Italy;18;18;Lance Stroll;Aston Martin Aramco Mercedes;1:22.748;;;9;2022
+Italy;19;20;Kevin Magnussen;Haas Ferrari;1:22.908;;;10;2022
+Italy;20;47;Mick Schumacher;Haas Ferrari;1:23.005;;;9;2022
+Singapore;1;16;Charles Leclerc;Ferrari;1:54.129;1:52.343;1:49.412;20;2022
+Singapore;2;11;Sergio Perez;Red Bull Racing RBPT;1:54.404;1:52.818;1:49.434;20;2022
+Singapore;3;44;Lewis Hamilton;Mercedes;1:53.161;1:52.691;1:49.466;24;2022
+Singapore;4;55;Carlos Sainz;Ferrari;1:54.559;1:53.219;1:49.583;22;2022
+Singapore;5;14;Fernando Alonso;Alpine Renault;1:55.360;1:53.127;1:49.966;23;2022
+Singapore;6;4;Lando Norris;McLaren Mercedes;1:55.914;1:53.942;1:50.584;24;2022
+Singapore;7;10;Pierre Gasly;AlphaTauri RBPT;1:55.606;1:53.546;1:51.211;24;2022
+Singapore;8;1;Max Verstappen;Red Bull Racing RBPT;1:53.057;1:52.723;1:51.395;20;2022
+Singapore;9;20;Kevin Magnussen;Haas Ferrari;1:55.103;1:54.006;1:51.573;23;2022
+Singapore;10;22;Yuki Tsunoda;AlphaTauri RBPT;1:55.314;1:53.848;1:51.983;23;2022
+Singapore;11;63;George Russell;Mercedes;1:54.633;1:54.012;;17;2022
+Singapore;12;18;Lance Stroll;Aston Martin Aramco Mercedes;1:55.629;1:54.211;;15;2022
+Singapore;13;47;Mick Schumacher;Haas Ferrari;1:55.736;1:54.370;;16;2022
+Singapore;14;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:55.602;1:54.380;;15;2022
+Singapore;15;24;Guanyu Zhou;Alfa Romeo Ferrari;1:55.375;1:55.518;;14;2022
+Singapore;16;77;Valtteri Bottas;Alfa Romeo Ferrari;1:56.083;;;7;2022
+Singapore;17;3;Daniel Ricciardo;McLaren Mercedes;1:56.226;;;9;2022
+Singapore;18;31;Esteban Ocon;Alpine Renault;1:56.337;;;9;2022
+Singapore;19;23;Alexander Albon;Williams Mercedes;1:56.985;;;7;2022
+Singapore;20;6;Nicholas Latifi;Williams Mercedes;1:57.532;;;8;2022
+Japan;1;1;Max Verstappen;Red Bull Racing RBPT;1:30.224;1:30.346;1:29.304;13;2022
+Japan;2;16;Charles Leclerc;Ferrari;1:30.402;1:30.486;1:29.314;13;2022
+Japan;3;55;Carlos Sainz;Ferrari;1:30.336;1:30.444;1:29.361;13;2022
+Japan;4;11;Sergio Perez;Red Bull Racing RBPT;1:30.622;1:29.25;1:29.709;15;2022
+Japan;5;31;Esteban Ocon;Alpine Renault;1:30.696;1:30.357;1:30.165;18;2022
+Japan;6;44;Lewis Hamilton;Mercedes;1:30.906;1:30.443;1:30.261;20;2022
+Japan;7;14;Fernando Alonso;Alpine Renault;1:30.603;1:30.343;1:30.322;15;2022
+Japan;8;63;George Russell;Mercedes;1:30.865;1:30.465;1:30.389;19;2022
+Japan;9;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:31.256;1:30.656;1:30.554;15;2022
+Japan;10;4;Lando Norris;McLaren Mercedes;1:30.881;1:30.473;1:31.003;18;2022
+Japan;11;3;Daniel Ricciardo;McLaren Mercedes;1:30.880;1:30.659;;11;2022
+Japan;12;77;Valtteri Bottas;Alfa Romeo Ferrari;1:31.226;1:30.709;;12;2022
+Japan;13;22;Yuki Tsunoda;AlphaTauri RBPT;1:31.130;1:30.808;;15;2022
+Japan;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:30.894;1:30.953;;12;2022
+Japan;15;47;Mick Schumacher;Haas Ferrari;1:31.152;1:31.439;;12;2022
+Japan;16;23;Alexander Albon;Williams Mercedes;1:31.311;;;6;2022
+Japan;17;10;Pierre Gasly;AlphaTauri RBPT;1:31.322;;;9;2022
+Japan;18;20;Kevin Magnussen;Haas Ferrari;1:31.352;;;6;2022
+Japan;19;18;Lance Stroll;Aston Martin Aramco Mercedes;1:31.419;;;6;2022
+Japan;20;6;Nicholas Latifi;Williams Mercedes;1:31.511;;;8;2022
+United States;1;55;Carlos Sainz;Ferrari;1:35.297;1:35.590;1:34.356;14;2022
+United States;2;16;Charles Leclerc;Ferrari;1:35.795;1:35.246;1:34.421;14;2022
+United States;3;1;Max Verstappen;Red Bull Racing RBPT;1:35.864;1:35.294;1:34.448;15;2022
+United States;4;11;Sergio Perez;Red Bull Racing RBPT;1:36.163;1:35.864;1:34.645;12;2022
+United States;5;44;Lewis Hamilton;Mercedes;1:36.148;1:35.732;1:34.947;18;2022
+United States;6;63;George Russell;Mercedes;1:36.195;1:35.692;1:34.988;19;2022
+United States;7;18;Lance Stroll;Aston Martin Aramco Mercedes;1:36.860;1:36.032;1:35.598;15;2022
+United States;8;4;Lando Norris;McLaren Mercedes;1:36.465;1:36.341;1:35.690;18;2022
+United States;9;14;Fernando Alonso;Alpine Renault;1:36.446;1:35.988;1:35.876;17;2022
+United States;10;77;Valtteri Bottas;Alfa Romeo Ferrari;1:36.746;1:36.321;1:36.319;18;2022
+United States;11;23;Alexander Albon;Williams Mercedes;1:36.922;1:36.368;;15;2022
+United States;12;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:36.995;1:36.398;;12;2022
+United States;13;10;Pierre Gasly;AlphaTauri RBPT;1:36.577;1:36.740;;11;2022
+United States;14;24;Guanyu Zhou;Alfa Romeo Ferrari;1:36.656;1:36.970;;15;2022
+United States;15;22;Yuki Tsunoda;AlphaTauri RBPT;1:36.808;1:37.147;;12;2022
+United States;16;20;Kevin Magnussen;Haas Ferrari;1:36.949;;;8;2022
+United States;17;3;Daniel Ricciardo;McLaren Mercedes;1:37.046;;;6;2022
+United States;18;31;Esteban Ocon;Alpine Renault;1:37.068;;;6;2022
+United States;19;47;Mick Schumacher;Haas Ferrari;1:37.111;;;8;2022
+United States;20;6;Nicholas Latifi;Williams Mercedes;1:37.244;;;8;2022
+Mexico;1;1;Max Verstappen;Red Bull Racing RBPT;1:19.222;1:18.566;1:17.775;16;2022
+Mexico;2;63;George Russell;Mercedes;1:19.583;1:18.565;1:18.079;18;2022
+Mexico;3;44;Lewis Hamilton;Mercedes;1:19.169;1:18.552;1:18.084;19;2022
+Mexico;4;11;Sergio Perez;Red Bull Racing RBPT;1:19.706;1:18.615;1:18.128;18;2022
+Mexico;5;55;Carlos Sainz;Ferrari;1:19.566;1:18.560;1:18.351;17;2022
+Mexico;6;77;Valtteri Bottas;Alfa Romeo Ferrari;1:19.523;1:18.762;1:18.401;18;2022
+Mexico;7;16;Charles Leclerc;Ferrari;1:19.505;1:19.109;1:18.555;18;2022
+Mexico;8;4;Lando Norris;McLaren Mercedes;1:19.857;1:19.119;1:18.721;19;2022
+Mexico;9;14;Fernando Alonso;Alpine Renault;1:20.006;1:19.272;1:18.939;15;2022
+Mexico;10;31;Esteban Ocon;Alpine Renault;1:19.945;1:19.081;1:19.010;18;2022
+Mexico;11;3;Daniel Ricciardo;McLaren Mercedes;1:20.279;1:19.325;;14;2022
+Mexico;12;24;Guanyu Zhou;Alfa Romeo Ferrari;1:20.283;1:19.476;;12;2022
+Mexico;13;22;Yuki Tsunoda;AlphaTauri RBPT;1:19.907;1:19.589;;13;2022
+Mexico;14;10;Pierre Gasly;AlphaTauri RBPT;1:20.256;1:19.672;;15;2022
+Mexico;15;20;Kevin Magnussen;Haas Ferrari;1:20.293;1:19.833;;11;2022
+Mexico;16;47;Mick Schumacher;Haas Ferrari;1:20.419;;;11;2022
+Mexico;17;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:20.419;;;10;2022
+Mexico;18;18;Lance Stroll;Aston Martin Aramco Mercedes;1:20.520;;;10;2022
+Mexico;19;23;Alexander Albon;Williams Mercedes;1:20.859;;;10;2022
+Mexico;20;6;Nicholas Latifi;Williams Mercedes;1:21.167;;;10;2022
+Brazil;1;20;Kevin Magnussen;Haas Ferrari;1:13.954;1:11.410;1:11.674;26;2022
+Brazil;2;1;Max Verstappen;Red Bull Racing RBPT;1:13.625;1:10.881;1:11.877;23;2022
+Brazil;3;63;George Russell;Mercedes;1:14.427;1:11.318;1:12.059;24;2022
+Brazil;4;4;Lando Norris;McLaren Mercedes;1:13.106;1:11.377;1:12.263;25;2022
+Brazil;5;55;Carlos Sainz;Ferrari;0,059259259;1:10.890;1:12.357;24;2022
+Brazil;6;31;Esteban Ocon;Alpine Renault;1:14.663;1:11.587;1:12.425;22;2022
+Brazil;7;14;Fernando Alonso;Alpine Renault;1:13.542;1:11.394;1:12.504;21;2022
+Brazil;8;44;Lewis Hamilton;Mercedes;1:13.403;1:11.539;1:12.611;25;2022
+Brazil;9;11;Sergio Perez;Red Bull Racing RBPT;1:13.613;1:11.456;1:15.601;26;2022
+Brazil;10;16;Charles Leclerc;Ferrari;1:14.486;1:10.950;DNF;25;2022
+Brazil;11;23;Alexander Albon;Williams Mercedes;1:14.324;1:11.631;;21;2022
+Brazil;12;10;Pierre Gasly;AlphaTauri RBPT;1:14.371;1:11.675;;24;2022
+Brazil;13;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:13.597;1:11.678;;23;2022
+Brazil;14;3;Daniel Ricciardo;McLaren Mercedes;1:14.931;1:12.140;;21;2022
+Brazil;15;18;Lance Stroll;Aston Martin Aramco Mercedes;1:14.398;1:12.210;;24;2022
+Brazil;16;6;Nicholas Latifi;Williams Mercedes;1:15.095;;;13;2022
+Brazil;17;24;Guanyu Zhou;Alfa Romeo Ferrari;1:15.197;;;12;2022
+Brazil;18;77;Valtteri Bottas;Alfa Romeo Ferrari;1:15.486;;;13;2022
+Brazil;19;22;Yuki Tsunoda;AlphaTauri RBPT;1:16.264;;;12;2022
+Brazil;20;47;Mick Schumacher;Haas Ferrari;1:16.361;;;12;2022
+Abu Dhabi;1;1;Max Verstappen;Red Bull Racing RBPT;1:24.754;1:24.622;1:23.824;17;2022
+Abu Dhabi;2;11;Sergio Perez;Red Bull Racing RBPT;1:24.820;1:24.419;1:24.052;18;2022
+Abu Dhabi;3;16;Charles Leclerc;Ferrari;1:25.211;1:24.517;1:24.092;17;2022
+Abu Dhabi;4;55;Carlos Sainz;Ferrari;1:25.090;1:24.521;1:24.242;16;2022
+Abu Dhabi;5;44;Lewis Hamilton;Mercedes;1:25.594;1:24.774;1:24.508;21;2022
+Abu Dhabi;6;63;George Russell;Mercedes;1:25.545;1:24.940;1:24.511;20;2022
+Abu Dhabi;7;4;Lando Norris;McLaren Mercedes;1:25.387;1:24.903;1:24.769;17;2022
+Abu Dhabi;8;31;Esteban Ocon;Alpine Renault;1:25.735;1:25.007;1:24.830;17;2022
+Abu Dhabi;9;5;Sebastian Vettel;Aston Martin Aramco Mercedes;1:25.523;1:24.974;1:24.961;18;2022
+Abu Dhabi;10;3;Daniel Ricciardo;McLaren Mercedes;1:25.766;1:25.068;1:25.045;15;2022
+Abu Dhabi;11;14;Fernando Alonso;Alpine Renault;1:25.782;1:25.096;;12;2022
+Abu Dhabi;12;22;Yuki Tsunoda;AlphaTauri RBPT;1:25.630;1:25.219;;15;2022
+Abu Dhabi;13;47;Mick Schumacher;Haas Ferrari;1:25.711;1:25.225;;15;2022
+Abu Dhabi;14;18;Lance Stroll;Aston Martin Aramco Mercedes;1:25.741;1:25.359;;15;2022
+Abu Dhabi;15;24;Guanyu Zhou;Alfa Romeo Ferrari;1:25.594;1:25.408;;12;2022
+Abu Dhabi;16;20;Kevin Magnussen;Haas Ferrari;1:25.834;;;9;2022
+Abu Dhabi;17;10;Pierre Gasly;AlphaTauri RBPT;1:25.859;;;9;2022
+Abu Dhabi;18;77;Valtteri Bottas;Alfa Romeo Ferrari;1:25.892;;;6;2022
+Abu Dhabi;19;23;Alexander Albon;Williams Mercedes;1:26.028;;;9;2022
+Abu Dhabi;20;6;Nicholas Latifi;Williams Mercedes;1:26.054;;;9;2022
