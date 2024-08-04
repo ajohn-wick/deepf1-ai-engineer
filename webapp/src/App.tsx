@@ -1,30 +1,117 @@
-import { Amplify } from "aws-amplify";
+import { useEffect, useState, useRef } from 'react';
+import { Amplify, Auth } from "aws-amplify";
 import {
     Authenticator,
     Button,
 } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import './App.css';
+import { AWSBRChat } from './components/chat';
 
-import aws_exports from "./aws-exports.js";
+import aws_exports from "./aws-exports.ts";
 Amplify.configure(aws_exports);
 
-const App = () => {
+async function handleSignOut() {
+    try {
+        await Auth.signOut();
+        
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+}
 
+function useAuthStatus() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      checkAuthStatus();
+    }, []);
+  
+    async function checkAuthStatus() {
+      try {
+        // console.log("checkAuthStatus called");
+        await Auth.currentAuthenticatedUser();
+        setIsAuthenticated(true);
+      } catch {
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  
+    return { isAuthenticated, isLoading };
+}
+
+  function BedrockChat() {
+    const { isAuthenticated, isLoading } = useAuthStatus();
+  
+    useEffect(() => {
+        chatFeature(isAuthenticated);
+    }, [isAuthenticated]);
+  
+    async function chatFeature(userAuthenticated: boolean) {
+        // console.log("chatFeature called");
+        if (userAuthenticated) {
+            new AWSBRChat({
+                auth: {
+                    region: aws_exports.aws_project_region,
+                    // identityPoolId: aws_exports.aws_cognito_identity_pool_id,
+                    // cognito: {
+                    //     userPoolId: aws_exports.aws_user_pools_id
+                    // }
+                    anonymous: {
+                    roleArn: "arn:aws:iam::119277175093:role/service-role/deepf1-cognito-guest-role"
+                    }
+                },
+                bedrock: {
+                    region: aws_exports.aws_project_region,
+                    modelId: "anthropic.claude-3-haiku-20240307-v1:0",
+                    // agent: {
+                    // agentId: "DQETCU2U6U",
+                    // agentAliasId: "CU3KAEHMWY"
+                    // }
+                },
+                ui: {
+                    logoUrl: "/bedrock_logo.png",
+                    floatingWindow: false,
+                    containerId: 'chat-container',
+                    webExperience: {
+                        // title: "DeepF1 - AI Strategy Assistant",
+                        // subtitle: "Our advanced AI model analyze race data to provide cutting-edge recommendations.",
+                        welcomeMessage: "DeepF1 - Our advanced AI model analyze race data to provide cutting-edge recommendations."
+                    }
+                }
+            });
+        }
+    }
+  
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+    if (isAuthenticated) {
+        return (
+            <div id="app">
+                <div id="chat-container"></div>
+            </div>
+        );
+    }
+  }
+
+const App = () => {
     return (
         <>
-            <div className="logo-text"><h1>DeepF1</h1></div>
-            <Authenticator>
-                {({ signOut, user }) => (
-                    <>
-                        <Button className="signOut" onClick={signOut}>Sign Out</Button>
-                        <div id="app">
-                            <div id="chat-container"></div>
-                        </div>
-
-                    </>
-                )}
-            </Authenticator>
+            <div id='bedrockChat'>
+                <div className="logo-text"><h1>DeepF1</h1></div>
+                <Authenticator>
+                    {({ signOut, user }) => (
+                        <>
+                            <Button className="signOut" onClick={handleSignOut}>Sign Out</Button>
+                            <BedrockChat />
+                        </>
+                    )}
+                </Authenticator>
+            </div>
         </>
     );
 };

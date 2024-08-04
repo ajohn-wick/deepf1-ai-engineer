@@ -1,21 +1,46 @@
 body, html {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
   font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   background-color: rgb(249, 249, 249);
   color: white;
+  width: 100%; min-width: 100%; max-width: 100%;
+  height: 100%; min-height: 100%; max-height: 100%;
+}
+#root {
+  position: absolute;
+  top: 0;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+}
+#bedrockChat {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 100%; min-width: 100%; max-width: 100%;
+  height: 100%; min-height: 100%; max-height: 100%;
+  div {
+    opacity: 1;
+    z-index: 999;
+  }
+}
+#bedrockChat::before {
+  content: "";
   background-image: url('/deepf1_logo.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
 }
 
 .logo-text {
@@ -23,23 +48,25 @@ body, html {
   position: relative; /* Fix the position at the top */
   top: 0;
   left: 0;
-}
-
-.logo-text h1 {
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
-  font-size: 90px;
-  font-weight: bold;
-  color: #000000;
-  text-align: center;   
+  h1 {
+    padding: 0;
+    position: relative;
+    top: 50px;
+    text-align: center;
+    font-size: 90px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;   
+  }
 }
 button.signOut {
   position: absolute;
-  right: 3%;
-  top: 3%;
+  right: 27%;
+  top: 7%;
   color: #ffffff;
   background-color: var(--amplify-colors-brand-primary-80);
+  z-index: 999;
+  opacity: 1;
 }
 button.signOut:hover {
   color: rgb(204, 48, 30);

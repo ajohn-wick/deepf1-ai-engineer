@@ -11,9 +11,4 @@ export default defineConfig({
     server: {
         port: 3000,
     },
-    resolve: {
-        alias: {
-            '@components': path.resolve(__dirname, 'src/components'),
-        }
-    }
 })

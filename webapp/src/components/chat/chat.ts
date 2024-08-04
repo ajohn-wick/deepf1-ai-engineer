@@ -84,12 +84,24 @@ export class AWSBRChat {
     }
 
     buildWebExperience(webExperience) {
+        // const tmpl = `
+        //     <div class="webExperience">
+        //         <div class="header">
+        //             <div class="title">${webExperience.title}</div>
+        //             <div class="subtitle">${webExperience.subtitle}</div>
+        //         </div>
+        //         <div class="welcomeMessage">
+        //             <div class="conversation-thread">
+        //                 ${this.getMessageTemplate({
+        //     role: "assistant",
+        //     content: [{ text: webExperience.welcomeMessage }]
+        // })}
+        //             </div>
+        //         </div>
+        //     </div>
+        // `;
         const tmpl = `
             <div class="webExperience">
-                <div class="header">
-                    <div class="title">${webExperience.title}</div>
-                    <div class="subtitle">${webExperience.subtitle}</div>
-                </div>
                 <div class="welcomeMessage">
                     <div class="conversation-thread">
                         ${this.getMessageTemplate({
