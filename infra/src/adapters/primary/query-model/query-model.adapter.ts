@@ -19,7 +19,7 @@ export const queryModelAdapter = async ({
     body,
 }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
-        if (!body) throw new ValidationError('no payload body');
+        if (!body) throw new ValidationError('no body payload');
         const parsedBody = JSON.parse(body);
 
         // call our use case for querying the knowledge base

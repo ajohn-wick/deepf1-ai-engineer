@@ -1,3 +1,4 @@
+
 import {
     MetricUnits,
     Metrics,
@@ -8,20 +9,22 @@ import { errorHandler, logger } from '@shared/index';
 import { injectLambdaContext } from '@aws-lambda-powertools/logger';
 import { ValidationError } from '@errors/validation-error';
 import middy from '@middy/core';
+import { queryModelUseCase } from '@use-cases/query-model';
 
 const tracer = new Tracer();
 const metrics = new Metrics();
 
 export const agentQueryKB = async (event: any, context: any) => {
     try {
-        if (!event) throw new ValidationError('no payload event');
+        if (!event) throw new ValidationError('no event payload');
         logger.info('Received event:', JSON.stringify(event, null, 2));
-        const { agent, actionGroup, apiPath, httpMethod, parameters, requestBody } = event;
+        const { actionGroup, apiPath, httpMethod, inputText } = event;
 
-        // Execute your business logic here. For more information, refer to: https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html
+        // call our use case for querying the knowledge base
+        const response = await queryModelUseCase(inputText);
         const responseBody = {
             'application/json': {
-                body: `The API ${apiPath} was called successfully!`
+                body: response
             }
         };
         metrics.addMetric('SuccessfulAgentQuery', MetricUnits.Count, 1);
@@ -33,14 +36,10 @@ export const agentQueryKB = async (event: any, context: any) => {
             responseBody
         };
 
-        const dummyApiResponse = {
+        return {
+            messageVersion: event.messageVersion,
             response: actionResponse,
-            messageVersion: event.messageVersion
-        };
-
-        logger.info(`Response: ${dummyApiResponse}`);
-
-        return dummyApiResponse;
+        }
     } catch (error) {
         let errorMessage = 'Unknown error';
         if (error instanceof Error) errorMessage = error.message;

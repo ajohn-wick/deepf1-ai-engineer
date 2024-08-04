@@ -4,6 +4,7 @@ import {
     RetrieveAndGenerateCommandInput,
     RetrieveAndGenerateCommandOutput,
 } from '@aws-sdk/client-bedrock-agent-runtime';
+import { logger } from '@shared/index';
 
 import { config } from '@config';
 
@@ -12,6 +13,7 @@ const knowledgeBaseId = config.get('knowledgeBaseId');
 const modelId = config.get('modelId');
 
 export async function queryModel(prompt: string): Promise<string> {
+    logger.info(`Prompt received: ${prompt}`);
     const input: RetrieveAndGenerateCommandInput = {
         input: {
             text: prompt,

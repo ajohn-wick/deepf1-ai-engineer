@@ -26,6 +26,16 @@ paths:
                   query: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?
       responses:
         '200':
-          description: ''
-tags: []
-
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: 'Bad Request'
+        '403':
+          description: 'Forbidden'
+        '404':
+          description: 'Not Found'
+        '500':
+          description: 'Internal Server Error'

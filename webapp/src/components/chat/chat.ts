@@ -42,7 +42,6 @@ export class AWSBRChat {
         try {
             if (this.config.auth.cognito) {
                 credentials = await Auth.currentCredentials();
-                console.log('**'+credentials);
             } else {
                 throw new Error("There is an error with your credentials. Check if you put a valid role");
             }
