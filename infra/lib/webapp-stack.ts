@@ -6,8 +6,8 @@ import { Stack, StackProps, RemovalPolicy, CfnOutput, Fn, Duration } from 'aws-c
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
-import * as s3 from 'aws-cdk-lib/aws-s3';
-import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
+// import * as s3 from 'aws-cdk-lib/aws-s3';
+// import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 // import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 // import { LambdaDestination } from 'aws-cdk-lib/aws-s3-notifications';
 import * as apigw from 'aws-cdk-lib/aws-apigateway';
@@ -146,41 +146,41 @@ export class DeepF1WebAppStack extends Stack {
         );
         /***** END INGESTION LAMBDA *****/
 
-        const agentFunction = new NodejsFunction(
-            this,
-            "WebAppLangChainAgentFunction",
-            {
-              entry: join(__dirname, '../src/langchain/agent.ts'),
-              architecture: lambda.Architecture.ARM_64,
-              runtime: lambda.Runtime.NODEJS_20_X,
-              timeout: Duration.seconds(60),
-              bundling: {
-                externalModules: [],
-              },
-            }
-          );
-          const agentFunctionUrl = agentFunction.addFunctionUrl({
-            authType: lambda.FunctionUrlAuthType.AWS_IAM,
-            invokeMode: lambda.InvokeMode.RESPONSE_STREAM,
-            cors: {
-              allowedOrigins: ["*"],
-              allowedHeaders: ['content-type', 'authorization', 'host', 'x-amz-content-sha256', 'x-amz-date', 'x-amz-security-token'],
-              allowedMethods: [lambda.HttpMethod.POST],
-            },
-          });
+        // const agentFunction = new NodejsFunction(
+        //     this,
+        //     "WebAppLangChainAgentFunction",
+        //     {
+        //       entry: join(__dirname, '../src/langchain/agent.ts'),
+        //       architecture: lambda.Architecture.ARM_64,
+        //       runtime: lambda.Runtime.NODEJS_20_X,
+        //       timeout: Duration.seconds(60),
+        //       bundling: {
+        //         externalModules: [],
+        //       },
+        //     }
+        //   );
+        //   const agentFunctionUrl = agentFunction.addFunctionUrl({
+        //     authType: lambda.FunctionUrlAuthType.AWS_IAM,
+        //     invokeMode: lambda.InvokeMode.RESPONSE_STREAM,
+        //     cors: {
+        //       allowedOrigins: ["*"],
+        //       allowedHeaders: ['content-type', 'authorization', 'host', 'x-amz-content-sha256', 'x-amz-date', 'x-amz-security-token'],
+        //       allowedMethods: [lambda.HttpMethod.POST],
+        //     },
+        //   });
       
-          const bedrockModelPolicy = new iam.PolicyStatement({
-            actions: ["bedrock:InvokeModelWithResponseStream"],
-            effect: iam.Effect.ALLOW,
-            resources: [
-              "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0",
-            ],
-          });
-          agentFunction.addToRolePolicy(bedrockModelPolicy);
+        //   const bedrockModelPolicy = new iam.PolicyStatement({
+        //     actions: ["bedrock:InvokeModelWithResponseStream"],
+        //     effect: iam.Effect.ALLOW,
+        //     resources: [
+        //       "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0",
+        //     ],
+        //   });
+        //   agentFunction.addToRolePolicy(bedrockModelPolicy);
       
-          new CfnOutput(this, "agentFunctionUrlOutput", {
-            value: agentFunctionUrl.url,
-          });
+        //   new CfnOutput(this, "agentFunctionUrlOutput", {
+        //     value: agentFunctionUrl.url,
+        //   });
 
         // Create the API for our race engineers users to consume via the static website
         const api: apigw.RestApi = this.createRESTApi(queryModelLambda);
@@ -195,39 +195,39 @@ export class DeepF1WebAppStack extends Stack {
         return this.node.tryGetContext('config');
     }
 
-    private createBucket(bucketName: string): s3.Bucket {
-        const s3CorsRule: s3.CorsRule = {
-            allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.HEAD],
-            allowedOrigins: ['*'],
-            allowedHeaders: ['*'],
-            maxAge: 300,
-        };
-        const bucketNameID = bucketName.replace('-', '').toUpperCase();
-        return new s3.Bucket(this, bucketNameID, {
-            bucketName: bucketName.toLowerCase(),
-            blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
-            accessControl: s3.BucketAccessControl.PRIVATE,
-            cors: [s3CorsRule],
-            autoDeleteObjects: true,
-            removalPolicy: RemovalPolicy.DESTROY,
-        });
-    }
+    // private createBucket(bucketName: string): s3.Bucket {
+    //     const s3CorsRule: s3.CorsRule = {
+    //         allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.HEAD],
+    //         allowedOrigins: ['*'],
+    //         allowedHeaders: ['*'],
+    //         maxAge: 300,
+    //     };
+    //     const bucketNameID = bucketName.replace('-', '').toUpperCase();
+    //     return new s3.Bucket(this, bucketNameID, {
+    //         bucketName: bucketName.toLowerCase(),
+    //         blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+    //         accessControl: s3.BucketAccessControl.PRIVATE,
+    //         cors: [s3CorsRule],
+    //         autoDeleteObjects: true,
+    //         removalPolicy: RemovalPolicy.DESTROY,
+    //     });
+    // }
 
-    private createCloudfrontDistrib(bucket: s3.Bucket, oai: cloudfront.OriginAccessIdentity): cloudfront.CloudFrontWebDistribution {
-        return new cloudfront.CloudFrontWebDistribution(this, 'WebAppDistribution', {
-            defaultRootObject: "index.html",
-            httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
-            originConfigs: [
-                {
-                    s3OriginSource: {
-                        s3BucketSource: bucket,
-                        originAccessIdentity: oai,
-                    },
-                    behaviors: [{ isDefaultBehavior: true }, { pathPattern: '/*', allowedMethods: cloudfront.CloudFrontAllowedMethods.GET_HEAD }]
-                },
-            ],
-        });
-    }
+    // private createCloudfrontDistrib(bucket: s3.Bucket, oai: cloudfront.OriginAccessIdentity): cloudfront.CloudFrontWebDistribution {
+    //     return new cloudfront.CloudFrontWebDistribution(this, 'WebAppDistribution', {
+    //         defaultRootObject: "index.html",
+    //         httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
+    //         originConfigs: [
+    //             {
+    //                 s3OriginSource: {
+    //                     s3BucketSource: bucket,
+    //                     originAccessIdentity: oai,
+    //                 },
+    //                 behaviors: [{ isDefaultBehavior: true }, { pathPattern: '/*', allowedMethods: cloudfront.CloudFrontAllowedMethods.GET_HEAD }]
+    //             },
+    //         ],
+    //     });
+    // }
 
     private createNodeJSLambdaFn(lambdaProps: LambdaProps): NodejsFunction {
         return new NodejsFunction(this, lambdaProps.functionName.replace('-', '').toUpperCase(), lambdaProps);
