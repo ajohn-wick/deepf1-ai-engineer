@@ -56,13 +56,13 @@ function useAuthStatus() {
             new AWSBRChat({
                 auth: {
                     region: aws_exports.aws_project_region,
-                    // identityPoolId: undefined,
-                    // cognito: {
-                    //     userPoolId: undefined
-                    // },
-                    anonymous: {
-                        roleArn: "arn:aws:iam::119277175093:role/service-role/deepf1-cognito-guest-role"
-                    }
+                    identityPoolId: undefined,
+                    cognito: {
+                        userPoolId: undefined
+                    },
+                    // anonymous: {
+                    //     roleArn: ""
+                    // }
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
