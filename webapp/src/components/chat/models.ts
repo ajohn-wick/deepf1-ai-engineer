@@ -6,6 +6,7 @@ export type WebExperience = {
 
 export type CognitoAuthConfig = {
     userPoolId: string;
+    identityPoolId: string;
 }
 export type AnonymousAuthConfig = {
     roleArn: string;
@@ -26,13 +27,11 @@ export type BedrockAgentConfig = {
 export type BedrockConfig = {
     region: string;
     modelId?: string;
-    agent: BedrockAgentConfig;
+    agent?: BedrockAgentConfig;
 }
 export type AuthConfig = {
     region: string;
-    identityPoolId: string;
-    cognito?: CognitoAuthConfig
-    anonymous?: AnonymousAuthConfig;
+    cognito: CognitoAuthConfig
 }
 export type Config = {
     auth: AuthConfig;

@@ -1,39 +1,44 @@
 {
-  "info": {
-    "_postman_id": "478fjzfr39-0123-5525-9d3e-h4389fh48fj",
-    "name": "DeepF1 Knowledge Base",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "959903"
-  },
-  "item": [
-    {
-      "name": "POST Query",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"query\": \"Which F1 Driver set the fastest lap time during the Formula 1 Spain 2022 Race?\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "https://your-rest-id.execute-api.us-east-1.amazonaws.com/prod/deepf1/",
-          "protocol": "https",
-          "host": [
-            "your-rest-id",
-            "execute-api",
-            "us-east-1",
-            "amazonaws",
-            "com"
-          ],
-          "path": ["prod", "deepf1", ""]
-        }
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "6da3e4cb-3956-48b3-8111-88c8b09f1348",
+		"name": "DeepF1 Knowledge Base",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1700245",
+		"_collection_link": "https://dark-space-243021.postman.co/workspace/Team-Workspace~00d7fcb0-2aa6-4de5-86f4-b22f18e86c3e/collection/1700245-6da3e4cb-3956-48b3-8111-88c8b09f1348?action=share&source=collection_link&creator=1700245"
+	},
+	"item": [
+		{
+			"name": "POST Query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://[API GW ID].execute-api.[AWS REGION].amazonaws.com/prod/deepf1/",
+					"protocol": "https",
+					"host": [
+						"[API GW ID]",
+						"execute-api",
+						"[AWS REGION]",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"deepf1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }

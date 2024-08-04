@@ -1,6 +1,4 @@
-import { CognitoIdentityClient, GetIdCommand, GetOpenIdTokenCommand } from "@aws-sdk/client-cognito-identity";
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
-import { STSClient, AssumeRoleWithWebIdentityCommand } from "@aws-sdk/client-sts";
+import { Auth } from 'aws-amplify';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
@@ -14,17 +12,17 @@ export class AWSBRChat {
     // AWSConfig: AWSConfig;
     config: Config;
     messages: any[] = [];
-    dom_messages;
-    dom_loading;
-    dom_submit;
+    dom_messages: any;
+    dom_loading: any;
+    dom_submit: any;
     chatInterface: HTMLElement | undefined;
     loading: boolean = false;
 
     promptInputElement: HTMLInputElement | undefined;
 
-    #bedrockClient;
+    #bedrockClient: any;
 
-    constructor(config) {
+    constructor(config: Config) {
         // this.AWSConfig = AWSconfig;
         this.config = config;
 
@@ -42,10 +40,8 @@ export class AWSBRChat {
     async init() {
         let credentials;
         try {
-            if (this.config.auth.anonymous) {
-                credentials = await this.awsCredentialsForAnonymousUser();
-            } else if (this.config.auth.cognito) {
-                credentials = await this.awsCredentialsForAuthCognitoUser();
+            if (this.config.auth.cognito) {
+                credentials = await Auth.currentCredentials();
                 console.log('**'+credentials);
             } else {
                 throw new Error("There is an error with your credentials. Check if you put a valid role");
@@ -72,9 +68,6 @@ export class AWSBRChat {
     }
 
     checkConfigs() {
-        if (this.config.auth.cognito !== undefined && this.config.auth.anonymous !== undefined) {
-            throw new Error("Your application can either authenticate using Cognito or Anonymous");
-        }
         if (this.config.ui.floatingWindow === true && this.config.ui.containerId !== undefined) {
             throw new Error("You can't have a containerId and floatingWindow to true");
         }
@@ -83,7 +76,7 @@ export class AWSBRChat {
         }
     }
 
-    buildWebExperience(webExperience) {
+    buildWebExperience(webExperience: any) {
         let tmpl = '';
         if (this.config.ui.floatingWindow) {
             tmpl = `<div class="webExperience whiteBackground">
@@ -223,7 +216,7 @@ export class AWSBRChat {
         this.setLoading(false);
     }
 
-    getSourceTemplate(source) {
+    getSourceTemplate(source: any) {
         if (source.url !== "") {
             return `
             <a class="title" href="${source.url}">${source.title}</a>
@@ -238,7 +231,7 @@ export class AWSBRChat {
         };
     }
 
-    getSources(message) {
+    getSources(message: any) {
         if (message.sourceAttribution && message.sourceAttribution.length > 0) {
             let tmpl = `
               <div class="label">Sources</div>
@@ -257,7 +250,7 @@ export class AWSBRChat {
         return "";
     }
 
-    getMessageAvatar(message) {
+    getMessageAvatar(message: any) {
         if (message.role === "user") {
             return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA1NiA1NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZGRfNTM4Xzc3MDE2KSI+CjxjaXJjbGUgY3g9IjI4IiBjeT0iMjciIHI9IjI0IiBmaWxsPSIjQzExNTc0Ii8+CjwvZz4KPHBhdGggZD0iTTM2IDM2VjM0QzM2IDMyLjkzOTEgMzUuNTc4NiAzMS45MjE3IDM0LjgyODQgMzEuMTcxNkMzNC4wNzgzIDMwLjQyMTQgMzMuMDYwOSAzMCAzMiAzMEgyNEMyMi45MzkxIDMwIDIxLjkyMTcgMzAuNDIxNCAyMS4xNzE2IDMxLjE3MTZDMjAuNDIxNCAzMS45MjE3IDIwIDMyLjkzOTEgMjAgMzRWMzYiIHN0cm9rZT0iI0ZDRkNGRCIgc3Ryb2tlLXdpZHRoPSIyLjE4MTgyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTI4IDI2QzMwLjIwOTEgMjYgMzIgMjQuMjA5MSAzMiAyMkMzMiAxOS43OTA5IDMwLjIwOTEgMTggMjggMThDMjUuNzkwOSAxOCAyNCAxOS43OTA5IDI0IDIyQzI0IDI0LjIwOTEgMjUuNzkwOSAyNiAyOCAyNloiIHN0cm9rZT0iI0ZDRkNGRCIgc3Ryb2tlLXdpZHRoPSIyLjE4MTgyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZGRfNTM4Xzc3MDE2IiB4PSIwLjcyNzI3MyIgeT0iMC44MTgxODIiIHdpZHRoPSI1NC41NDU1IiBoZWlnaHQ9IjU0LjU0NTUiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMS4wOTA5MSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxLjA5MDkxIi8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAuMDYyNzQ1MSAwIDAgMCAwIDAuMDk0MTE3NiAwIDAgMCAwIDAuMTU2ODYzIDAgMCAwIDAuMDYgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9ImVmZmVjdDFfZHJvcFNoYWRvd181MzhfNzcwMTYiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMS4wOTA5MSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxLjYzNjM2Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAuMDYyNzQ1MSAwIDAgMCAwIDAuMDk0MTE3NiAwIDAgMCAwIDAuMTU2ODYzIDAgMCAwIDAuMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3dfNTM4Xzc3MDE2IiByZXN1bHQ9ImVmZmVjdDJfZHJvcFNoYWRvd181MzhfNzcwMTYiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QyX2Ryb3BTaGFkb3dfNTM4Xzc3MDE2IiByZXN1bHQ9InNoYXBlIi8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=";
         } else if (message.role === "assistant") {
@@ -266,18 +259,18 @@ export class AWSBRChat {
         return "";
     }
 
-    getMessageTemplate(message) {
+    getMessageTemplate(message: any) {
         return `
         <div class="message ${message.role}">
             <img class="avatar" src="${this.getMessageAvatar(message)}"/>
             <div class="body-response">
-              <div class="text">${DOMPurify.sanitize(marked.parse(message.content[0].text))}</div>
+              <div class="text">${DOMPurify.sanitize(marked.parse(message.content[0].text) as string)}</div>
             </div>
         </div>
         `;
     }
 
-    generateMessageTemplate(message) {
+    generateMessageTemplate(message: any) {
         const tmpl = this.getMessageTemplate(message);
         const range = document.createRange();
         const fragment = range.createContextualFragment(tmpl);
@@ -293,55 +286,7 @@ export class AWSBRChat {
         }
     }
 
-
-
-    awsCredentialsForAuthCognitoUser() {
-        const userId = localStorage.getItem(`CognitoIdentityServiceProvider.${this.config.auth.cognito?.userPoolId}.LastAuthUser`);
-        const idToken = localStorage.getItem(`CognitoIdentityServiceProvider.${this.config.auth.cognito?.userPoolId}.${userId}.idToken`);
-
-        console.log(`idToken: ${idToken}`);
-        const decodedToken = JSON.parse(atob(idToken!.split('.')[1]));
-        const issuer = decodedToken.iss;
-        console.log(`issuer: ${issuer}`);
-
-        const providerName = issuer.replace("https://", "");
-
-        const credentials = fromCognitoIdentityPool({
-            identityPoolId: this.config.auth.identityPoolId,
-            logins: {
-                [providerName]: idToken,
-            } as { [key: string]: string },
-            clientConfig: { region: this.config.auth.region },
-        });
-
-        return credentials;
-    }
-
-    async awsCredentialsForAnonymousUser() {
-        // 1. Obtain a Cognito Identity Pool OpenId token.
-        const cognitoClient = new CognitoIdentityClient({ region: this.config.auth.region });
-
-        const identity = await cognitoClient.send(new GetIdCommand({ IdentityPoolId: this.config.auth.identityPoolId }));
-        const token = await cognitoClient.send(new GetOpenIdTokenCommand({ IdentityId: identity.IdentityId }))
-
-        // 2. exchange the Cognito OpenId token for an AWS access key and secret key.
-        // This is done by assuming a role that defines the permission on these tokens
-        const stsClient = new STSClient({ region: this.config.auth.region });
-        const credentials = await stsClient.send(new AssumeRoleWithWebIdentityCommand({
-            RoleArn: this.config.auth.anonymous?.roleArn,
-            RoleSessionName: 'BedrockEmbedChat',
-            WebIdentityToken: token.Token
-        }));
-
-        return {
-            accessKeyId: credentials.Credentials?.AccessKeyId || "",
-            secretAccessKey: credentials.Credentials?.SecretAccessKey || "",
-            sessionToken: credentials.Credentials?.SessionToken || "",
-            expiration: credentials.Credentials?.Expiration || new Date()
-        };
-    };
-
-    displayMessage(message) {
+    displayMessage(message: any) {
         this.dom_messages.insertBefore(this.generateMessageTemplate(message), this.dom_messages.lastChild.nextSibling);
     }
 

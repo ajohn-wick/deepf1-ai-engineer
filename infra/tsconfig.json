@@ -26,6 +26,7 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@actions-group/*": ["./src/actions-group/*"],
       "@adapters/*": ["./src/adapters/*"],
       "@config": ["./src/config/index"],
       "@domain/*": ["./src/domain/*"],

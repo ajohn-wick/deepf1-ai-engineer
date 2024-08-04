@@ -371,12 +371,14 @@
 }
 
 .typing-animation .typing-dot {
-  height: 7px;
-  width: 7px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   /* margin: 0 3px; */
   opacity: 1;
   animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+  background-color: rgba(110, 59, 241, 1);
+  color: rgba(110, 59, 241, 1);
 }
 
 @keyframes animateDots {

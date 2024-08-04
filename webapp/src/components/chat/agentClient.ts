@@ -21,8 +21,8 @@ export class AgentClient {
 
     async sendMessage(messages: any[]) {
         const command = new InvokeAgentCommand({
-            agentId: this.config.bedrock.agent.agentId,
-            agentAliasId: this.config.bedrock.agent.agentAliasId,
+            agentId: this.config.bedrock.agent?.agentId,
+            agentAliasId: this.config.bedrock.agent?.agentAliasId,
             sessionId: this.sessionId,
             inputText: messages[messages.length - 1].content[0].text
         });

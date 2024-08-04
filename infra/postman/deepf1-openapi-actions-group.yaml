@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: DeepF1 Knowledge Base
+  version: 1.0.0
+  contact: {}
+servers:
+- url: https://[API GW ID].execute-api.[AWS REGION].amazonaws.com
+paths:
+  /prod/deepf1/:
+    post:
+      summary: POST Query
+      description: "Query Formula 1 Knowledge Base to get relevant insights from the different Formula 1 Championship seasons."
+      operationId: postQuery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  example: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?
+            examples:
+              POST Query:
+                value:
+                  query: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?
+      responses:
+        '200':
+          description: ''
+tags: []
+

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Amplify, Auth } from "aws-amplify";
 import {
     Authenticator,
@@ -8,7 +8,7 @@ import '@aws-amplify/ui-react/styles.css';
 import './App.css';
 import { AWSBRChat } from './components/chat';
 
-import aws_exports from "./aws-exports.ts";
+import aws_exports from "./aws-exports";
 Amplify.configure(aws_exports);
 
 async function handleSignOut() {
@@ -56,26 +56,23 @@ function useAuthStatus() {
             new AWSBRChat({
                 auth: {
                     region: aws_exports.aws_project_region,
-                    identityPoolId: undefined,
                     cognito: {
-                        userPoolId: undefined
-                    },
-                    // anonymous: {
-                    //     roleArn: ""
-                    // }
+                        userPoolId: aws_exports.aws_user_pools_id,
+                        identityPoolId: aws_exports.aws_cognito_identity_pool_id
+                    }
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
-                    modelId: "anthropic.claude-3-haiku-20240307-v1:0",
-                    // agent: {
-                    // agentId: "",
-                    // agentAliasId: ""
-                    // }
+                    // modelId: "anthropic.claude-3-haiku-20240307-v1:0"
+                    agent: {
+                        agentId: "VTSQWCDFWB",
+                        agentAliasId: "LRIWJT8Q4B"
+                    }
                 },
                 ui: {
                     logoUrl: "/bedrock_logo.png",
-                    // floatingWindow: true,
-                    containerId: 'chat-container',
+                    floatingWindow: false,
+                    containerId: "chat-container",
                     webExperience: {
                         title: "AI Strategy Assistant",
                         subtitle: "Our advanced AI model analyze race data to provide cutting-edge recommendations.",
@@ -104,7 +101,7 @@ const App = () => {
             <div id='bedrockChat'>
                 <div className="logo-text"><h1>DeepF1</h1></div>
                 <Authenticator>
-                    {({ signOut, user }) => (
+                    {() => (
                         <>
                             <Button className="signOut" onClick={handleSignOut}>Sign Out</Button>
                             <BedrockChat />
