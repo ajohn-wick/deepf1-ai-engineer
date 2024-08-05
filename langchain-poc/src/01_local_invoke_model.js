@@ -13,7 +13,7 @@ Your main goal is to provide useful information to users.
 `;
 const response = await model.invoke([
     new SystemMessage(prompt),
-    new HumanMessage("Which F1 Driver set the fastest lap time during the Formula 1 Spain 2022 Race?"),
+    new HumanMessage("Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?"),
 ]);
 
 console.log(response.content);

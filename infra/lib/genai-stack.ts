@@ -39,7 +39,7 @@ export class DeepF1GenAIStack extends Stack {
             const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
             const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
-            agent.addActionGroups([actionGroup])
+            agent.addActionGroups([actionGroup]);
 
             new CfnOutput(this, 'DataSourceIdOutput', {
                 value: dataSource.dataSourceId,
@@ -180,7 +180,7 @@ export class DeepF1GenAIStack extends Stack {
                 lambda: actionGroupLambda
             },
             actionGroupState: "ENABLED",
-            apiSchema: bedrock.ApiSchema.fromAsset(join(__dirname, '../postman/deepf1-openapi-actions-group.yaml')),
+            apiSchema: bedrock.ApiSchema.fromAsset(join(__dirname, '../resources/deepf1-openapi-actions-group.yaml')),
         });
     }
 

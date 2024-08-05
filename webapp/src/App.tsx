@@ -63,7 +63,8 @@ function useAuthStatus() {
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
-                    modelId: "anthropic.claude-3-haiku-20240307-v1:0"
+                    // modelId: "anthropic.claude-3-haiku-20240307-v1:0",
+                    modelId: "meta.llama3-8b-instruct-v1:0",
                     // agent: {
                     //     agentId: "",
                     //     agentAliasId: ""
