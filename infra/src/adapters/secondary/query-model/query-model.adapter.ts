@@ -14,7 +14,7 @@ const modelId = config.get('modelId');
 
 export async function queryModel(prompt: string): Promise<string> {
     logger.info(`Prompt received: ${prompt}`);
-    const input: RetrieveAndGenerateCommandInput = {
+    const inputCommand: RetrieveAndGenerateCommandInput = {
         input: {
             text: prompt,
         },
@@ -27,7 +27,7 @@ export async function queryModel(prompt: string): Promise<string> {
         },
     };
     const command: RetrieveAndGenerateCommand = new RetrieveAndGenerateCommand(
-        input
+        inputCommand
     );
     const response: RetrieveAndGenerateCommandOutput = await client.send(command);
     return response.output?.text as string;

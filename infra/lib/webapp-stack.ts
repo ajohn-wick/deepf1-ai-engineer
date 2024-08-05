@@ -1,16 +1,17 @@
 /***** CDK *****/
 import { Construct } from 'constructs';
-import { Stack, StackProps, CfnOutput, Fn, Duration } from 'aws-cdk-lib';
+import { Stack, StackProps, Fn, Duration } from 'aws-cdk-lib';
 /***** END CDK *****/
 
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import { type LambdaProps, lambdaConfig, modelId } from './config';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { LambdaDestination } from 'aws-cdk-lib/aws-s3-notifications';
-import * as apigw from 'aws-cdk-lib/aws-apigateway';
+// import * as apigw from 'aws-cdk-lib/aws-apigateway';
 import { join } from 'path';
+
+import { type LambdaProps, lambdaConfig, modelId } from './config';
 
 export class DeepF1WebAppStack extends Stack {
 
@@ -22,7 +23,7 @@ export class DeepF1WebAppStack extends Stack {
         const knowledgeBaseArn = Fn.importValue('KnowledgeBaseArnOutput');
         const knowledgeBaseId = Fn.importValue('KnowledgeBaseIdOutput');
 
-        /***** QUERY MODEL LAMBDA *****/
+        /***** QUERY MODEL LAMBDA *****
         const queryModelProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-query-model`,
             runtime: lambda.Runtime.NODEJS_20_X,
@@ -106,8 +107,8 @@ export class DeepF1WebAppStack extends Stack {
         /***** END INGESTION LAMBDA *****/
 
         // Create the API for our race engineers users to consume via the static website
-        const api: apigw.RestApi = this.createRESTApi(queryModelLambda);
-        new CfnOutput(this, 'WebAppRESTApiUrl', { value: api.url });
+        // const api: apigw.RestApi = this.createRESTApi(queryModelLambda);
+        // new CfnOutput(this, 'WebAppRESTApiUrl', { value: api.url });
     }
 
     public get appResourcePrefix(): string {
@@ -122,29 +123,29 @@ export class DeepF1WebAppStack extends Stack {
         return new NodejsFunction(this, lambdaProps.functionName.replace('-', '').toUpperCase(), lambdaProps);
     }
 
-    private createRESTApi(lambdaFn: NodejsFunction): apigw.RestApi {
-        const restApi: apigw.RestApi = new apigw.RestApi(this, 'WebAppRestApi', {
-            restApiName: `${this._appResourcePrefix}-rest-api`,
-            deploy: true,
-            endpointTypes: [apigw.EndpointType.REGIONAL],
-            deployOptions: {
-                stageName: 'prod',
-                dataTraceEnabled: true,
-                loggingLevel: apigw.MethodLoggingLevel.INFO,
-                tracingEnabled: true,
-                metricsEnabled: true,
-            },
-        });
-        restApi.node.tryRemoveChild('Endpoint');
-        const queries: apigw.Resource = restApi.root.addResource('deepf1');
-        // Add the endpoint for querying our knowledge base (post) on prod/deepf1/
-        queries.addMethod(
-          'POST',
-          new apigw.LambdaIntegration(lambdaFn, {
-            proxy: true,
-            allowTestInvoke: false,
-          })
-        );
-        return restApi;
-    }
+    // private createRESTApi(lambdaFn: NodejsFunction): apigw.RestApi {
+    //     const restApi: apigw.RestApi = new apigw.RestApi(this, 'WebAppRestApi', {
+    //         restApiName: `${this._appResourcePrefix}-rest-api`,
+    //         deploy: true,
+    //         endpointTypes: [apigw.EndpointType.REGIONAL],
+    //         deployOptions: {
+    //             stageName: 'prod',
+    //             dataTraceEnabled: true,
+    //             loggingLevel: apigw.MethodLoggingLevel.INFO,
+    //             tracingEnabled: true,
+    //             metricsEnabled: true,
+    //         },
+    //     });
+    //     restApi.node.tryRemoveChild('Endpoint');
+    //     const queries: apigw.Resource = restApi.root.addResource('deepf1');
+    //     // Add the endpoint for querying our knowledge base (post) on prod/deepf1/
+    //     queries.addMethod(
+    //       'POST',
+    //       new apigw.LambdaIntegration(lambdaFn, {
+    //         proxy: true,
+    //         allowTestInvoke: false,
+    //       })
+    //     );
+    //     return restApi;
+    // }
 }

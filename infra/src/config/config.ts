@@ -19,4 +19,10 @@ export const config = convict({
         default: '',
         env: 'DATA_SOURCE_ID',
     },
+    promptTemplate: {
+        doc: 'The prompt template to use for the RAG chain',
+        format: String,
+        default: '',
+        env: 'PROMPT_TEMPLATE',
+    }
 }).validate({ allowed: 'strict' });

@@ -3,13 +3,15 @@ import { Construct } from 'constructs';
 import { Stack, StackProps, Duration, RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
 /***** END CDK *****/
 
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { bedrock } from '@cdklabs/generative-ai-cdk-constructs';
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import { type LambdaProps, lambdaConfig } from './config';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
+
+import { type LambdaProps, lambdaConfig, modelId } from './config';
 
 export class DeepF1GenAIStack extends Stack {
 
@@ -36,7 +38,7 @@ export class DeepF1GenAIStack extends Stack {
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
             const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup();
+            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
             agent.addActionGroups([actionGroup])
 
             new CfnOutput(this, 'DataSourceIdOutput', {
@@ -137,7 +139,7 @@ export class DeepF1GenAIStack extends Stack {
         });
     }
 
-    private createBedrockAgentActionGroup(): bedrock.AgentActionGroup {
+    private createBedrockAgentActionGroup(kbId: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
             runtime: lambda.Runtime.NODEJS_20_X,
@@ -154,10 +156,23 @@ export class DeepF1GenAIStack extends Stack {
                 minify: true,
             },
             environment: {
+                KNOWLEDGE_BASE_ID: kbId,
+                BEDROCK_MODEL_ID: modelId,
+                PROMPT_TEMPLATE: this._agentInstruction,
                 ...lambdaConfig,
             },
         };
         const actionGroupLambda: NodejsFunction = this.createNodeJSLambdaFn(actionGroupProps);
+        actionGroupLambda.addToRolePolicy(new PolicyStatement({
+            actions: [
+                'bedrock:Retrieve',
+                'bedrock:InvokeModel',
+            ],
+            resources: [
+                `arn:aws:bedrock:${this.region}:${this.account}:knowledge-base/${kbId}`,
+                `arn:aws:bedrock:${this.region}::foundation-model/${modelId}`
+            ],
+        }));
 
         return new bedrock.AgentActionGroup(this, 'GenAIAgentActionGroup', {
             actionGroupName: `${this._appResourcePrefix}-query-kb`,
