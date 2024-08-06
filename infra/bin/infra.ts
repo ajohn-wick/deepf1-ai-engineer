@@ -6,7 +6,6 @@ import { App } from 'aws-cdk-lib';
 /***** END CDK *****/
 
 import { DeepF1GenAIStack } from '../lib/genai-stack';
-import { DeepF1WebAppStack } from '../lib/webapp-stack';
 
 const stackProps = {
     env: {
@@ -19,8 +18,4 @@ const app = new App();
 const genAIStack = new DeepF1GenAIStack(app, 'DeepF1GenAIStack', {
     ...stackProps,
     description: "This stack creates a GenAI backend for our DeepF1 application"
-});
-const webAppStack = new DeepF1WebAppStack(app, 'DeepF1WebAppStack', {
-    ...stackProps,
-    description: "This stack creates a ReactJS frontend and an API Gateway with some Lambdas to interact with our DeepF1 GenAI backend"
 });

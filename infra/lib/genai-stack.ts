@@ -4,7 +4,8 @@ import { Stack, StackProps, Duration, RemovalPolicy, CfnOutput } from 'aws-cdk-l
 /***** END CDK *****/
 
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import { LambdaDestination } from 'aws-cdk-lib/aws-s3-notifications';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { bedrock } from '@cdklabs/generative-ai-cdk-constructs';
 import * as lambda from "aws-cdk-lib/aws-lambda";
@@ -28,7 +29,7 @@ export class DeepF1GenAIStack extends Stack {
             this._kbInstruction = config['bedrock_instructions']['kb_instruction'];
             this._agentInstruction = config['bedrock_instructions']['agent_instruction'];
 
-            const kbBucket: Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
+            const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
             new BucketDeployment(this, 'GenAIBucketDeployment', {
                 sources: [Source.asset(join(__dirname, '../data/'))],
                 destinationBucket: kbBucket,
@@ -41,18 +42,47 @@ export class DeepF1GenAIStack extends Stack {
             const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
             agent.addActionGroups([actionGroup]);
 
-            new CfnOutput(this, 'DataSourceIdOutput', {
-                value: dataSource.dataSourceId,
-                exportName: 'DataSourceIdOutput',
-            });
-            new CfnOutput(this, 'KnowledgeBaseArnOutput', {
-                value: kb.knowledgeBaseArn,
-                exportName: 'KnowledgeBaseArnOutput',
-            });
-            new CfnOutput(this, 'KnowledgeBaseIdOutput', {
-                value: kb.knowledgeBaseId,
-                exportName: 'KnowledgeBaseIdOutput',
-            });
+            /***** INGESTION LAMBDA *****/
+            const ingestionProps: LambdaProps = {
+                functionName: `${this._appResourcePrefix}-ingestion`,
+                runtime: lambda.Runtime.NODEJS_20_X,
+                memorySize: 1024,
+                entry: join(
+                    __dirname,
+                    '../src/adapters/primary/ingestion-lambda/ingestion-lambda.adapter.ts'
+                ),
+                handler: 'handler',
+                timeout: Duration.seconds(600),
+                architecture: lambda.Architecture.ARM_64,
+                tracing: lambda.Tracing.ACTIVE,
+                bundling: {
+                    minify: true,
+                },
+                environment: {
+                    DATA_SOURCE_ID: dataSource.dataSourceId,
+                    KNOWLEDGE_BASE_ID: kb.knowledgeBaseId,
+                    ...lambdaConfig,
+                },
+            };
+            const ingestionLambda: NodejsFunction = this.createNodeJSLambdaFn(ingestionProps);
+            // Create an s3 event source for objects being added, modified or removed
+            kbBucket.addEventNotification(
+                s3.EventType.OBJECT_CREATED_PUT,
+                new LambdaDestination(ingestionLambda)
+            );
+            kbBucket.addEventNotification(
+                s3.EventType.OBJECT_REMOVED,
+                new LambdaDestination(ingestionLambda)
+            );
+            // Ensure that the lambda function can start a data ingestion job
+            ingestionLambda.addToRolePolicy(
+                new PolicyStatement({
+                    actions: ['bedrock:StartIngestionJob'],
+                    resources: [kb.knowledgeBaseArn],
+                })
+            );
+            /***** END INGESTION LAMBDA *****/
+
             new CfnOutput(this, 'AgentIdOutput', {
                 value: agent.agentId,
                 exportName: 'AgentIdOutput',
@@ -96,12 +126,12 @@ export class DeepF1GenAIStack extends Stack {
         return this.node.tryGetContext('config');
     }
 
-    private createBucket(bucketName: string): Bucket {
+    private createBucket(bucketName: string): s3.Bucket {
         const bucketNameID = bucketName.replace('-', '').toUpperCase();
-        return new Bucket(this, bucketNameID, {
+        return new s3.Bucket(this, bucketNameID, {
             bucketName: bucketName.toLowerCase(),
             autoDeleteObjects: true,
-            encryption: BucketEncryption.S3_MANAGED,
+            encryption: s3.BucketEncryption.S3_MANAGED,
             removalPolicy: RemovalPolicy.DESTROY,
         });
     }
@@ -114,7 +144,7 @@ export class DeepF1GenAIStack extends Stack {
         });
     }
 
-    private createBedrockKBDataSource(kb: bedrock.KnowledgeBase, kbBucket: Bucket): bedrock.S3DataSource {
+    private createBedrockKBDataSource(kb: bedrock.KnowledgeBase, kbBucket: s3.Bucket): bedrock.S3DataSource {
         return new bedrock.S3DataSource(this, 'GenAIS3DataSource', {
             dataSourceName: this._appResourcePrefix + '-dataset',
             bucket: kbBucket,
