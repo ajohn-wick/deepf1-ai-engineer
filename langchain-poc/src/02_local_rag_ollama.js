@@ -9,7 +9,7 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createRetrievalChain } from "langchain/chains/retrieval";
 
 // 1. Initialize the models
-const model = new ChatOllama({ model: "llama3.1", temperature: 0 });
+const model = new ChatOllama({ model: "llama3", temperature: 0, topP: 0.9 });
 const embeddings = new OllamaEmbeddings({ model: "nomic-embed-text" });
 
 // 2. Load F1 Data and split it into smaller chunks
@@ -21,7 +21,7 @@ const loader = new DirectoryLoader("./../data",
 const csvData = await loader.load();
 const splitter = new RecursiveCharacterTextSplitter({
     separators: "\n",
-    chunkSize: 1000,
+    chunkSize: 512,
     chunkOverlap: 200
 });
 const deepF1Docs = await splitter.splitDocuments(csvData);

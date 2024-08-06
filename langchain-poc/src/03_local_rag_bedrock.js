@@ -1,7 +1,6 @@
 
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatBedrockConverse } from "@langchain/aws";
-
 import { AmazonKnowledgeBaseRetriever } from "@langchain/aws";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createRetrievalChain } from "langchain/chains/retrieval";
@@ -14,6 +13,7 @@ const modelId = config['modelId'];
 // 1. Initialize the models
 const model = new ChatBedrockConverse({
   model: modelId,
+  topP: 0.9,
   region: process.env.AWS_REGION,
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
