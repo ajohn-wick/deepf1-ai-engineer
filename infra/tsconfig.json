@@ -29,9 +29,7 @@
       "@actions-group/*": ["./src/actions-group/*"],
       "@adapters/*": ["./src/adapters/*"],
       "@config": ["./src/config/index"],
-      "@domain/*": ["./src/domain/*"],
       "@errors/*": ["./src/errors/*"],
-      "@schemas/*": ["./src/schemas/*"],
       "@shared/*": ["./src/shared/*"],
       "@use-cases/*": ["./src/use-cases/*"]
     }
