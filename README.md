@@ -3,14 +3,14 @@
 
 <img src="./webapp/public/favicon.ico" alt="DeepF1" align="center" height="64" />
 
-# GenAI, from your local machine to AWS with LangChain.js
+# GenAI, from your Local machine to AWS with LangChain.js
 
 ![Node version](https://img.shields.io/badge/Node.js->=20-3c873a?style=flat-square)
 [![Ollama + Llama3](https://img.shields.io/badge/Ollama-Llama3-0081FB?style=flat-square)](https://ollama.com/library/llama3)
 [![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-:star: If you like this sample, star it on GitHub — it helps a lot!
+:star: If you like this sample, Star it on GitHub — Feedback is a Gift!
 
 [Overview](#overview) • [Get started](#get-started) • [Run the sample](#run-the-sample) • [Resources](#resources) • [FAQ](#faq) • [Troubleshooting](#troubleshooting)
 
