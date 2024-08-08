@@ -50,7 +50,7 @@ This application is made from multiple components:
 
 ## Get started
 
-There are multiple ways to get started with this project. You can [experiment using your Local machine](#use-your-local-machine) or you can [deploy the sample to AWS](#deploy-the-sample)
+There are multiple ways to get started with this project. You can [experiment using your Local machine](#use-your-local-machine) or you can [deploy the sample to AWS](#deploy-the-sample-to-aws)
 
 ## Prerequisites
 
@@ -154,7 +154,7 @@ Do you want to configure advanced settings? No, I am done.<br />
 
 Once authentication added, open the [AWS IAM Roles Console](https://us-east-1.console.aws.amazon.com/iam/home#/roles), look for the `amplify-webapp-dev-[UNIQUE ID]-authRole` IAM role and attach the following policies (permissions):
 
-- arn:aws:iam::aws:policy/`AmazonBedrockFullAccess` (only used to ease usage of this sample, **do NOT use such policy in Production**)
+- arn:aws:iam::aws:policy/`AmazonBedrockFullAccess` (only used to ease usage of this sample, **do NOT use such policy in PROD**)
 
 Lastly, push your local AWS Amplify application to ensure its configuration can be in sync with the Cloud one:
 
@@ -310,7 +310,7 @@ amplify delete
 
 When prompted if you want to continue with the deletion of all the environments and local files created by Amplify CLI, enter `y`.
 
-ALL AWS resources provisioned via the [Deploy the sample](#deploy-the-sample) section will be deleted.
+ALL AWS resources provisioned via the [Deploy the sample to AWS](#deploy-the-sample-to-aws) section will be deleted.
 
 ## Resources
 
