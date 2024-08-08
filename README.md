@@ -1,6 +1,5 @@
 <!-- prettier-ignore -->
 <div align="center">
-
 <img src="./webapp/public/favicon.ico" alt="DeepF1" align="center" height="64" />
 
 # GenAI, from your Local machine to AWS with LangChain.js
@@ -45,18 +44,20 @@ This application is made from multiple components:
 ## Features
 
 - **Serverless Architecture**: Utilizes AWS Lambda and AWS Amplify for a fully Serverless deployment.
-- **Retrieval-Augmented Generation (RAG) + Agent**: Combines the power of Amazon Bedrock and LangChain.js to provide relevant and accurate responses.
+- **Retrieval-Augmented Generation (RAG) + Agentic**: Combines the power of Amazon Bedrock and LangChain.js to provide relevant and accurate responses.
 - **Scalable and Cost-Effective**: Leverages AWS Serverless offerings to provide a scalable and cost-effective solution.
 - **Local Development**: Supports local development using Ollama for testing without any Cloud costs.
 
 ## Get started
 
-There are multiple ways to get started with this project.
+There are multiple ways to get started with this project. You can [experiment using your Local machine](#use-your-local-machine) or you can [deploy the sample to AWS](#deploy-the-sample)
 
 ## Prerequisites
 
 You need to install the following tools to use that sample:
+
 - [Node.js LTS](https://nodejs.org/en/download/package-manager)
+- [Docker Engine](https://docs.docker.com/engine/install/).
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 - [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
 - [AWS Amplify CLI](https://github.com/aws-amplify/amplify-cli)
@@ -78,19 +79,21 @@ ollama pull nomic-embed-text
 ```
 
 > [!NOTE]
-> The `llama3` model download a few gigabytes of data, so it can take some time depending on your internet connection.
+> The `llama3` model download few gigabytes of data, so it can take some time depending on your internet connection.
 
 Then, you have to get the project code:
 
 1. Select the **Code** button, then the **Local** tab, and copy the URL of this repository.
-3. Open a terminal and run this command to clone this repo: <code> git clone &lt;repo-url&gt; </code>
+2. Open a terminal and run this command to clone this repo: <code>git clone &lt;repo-url&gt;</code>
 
 Once cloned, go to the `langchain-poc` folder and install NPM dependencies:
+
 ```bash
 npm install
 ```
 
 When NPM dependencies are installed, go to the `src` subfolder and execute the following command lines:
+
 - <code>node 01_local_invoke_model.js</code>
 - <code>node 02_local_rag_ollama.js</code>
 - <code>node 03_local_rag_bedrock.js</code>
@@ -99,8 +102,74 @@ When NPM dependencies are installed, go to the `src` subfolder and execute the f
 > While local models usually works well enough to answer the questions, sometimes they may not be able to follow perfectly the advanced formatting instructions and follow-up questions. This is expected, and a limitation of using smaller local models.
 
 > [!IMPORTANT]
-> If you want to run <code>node 03_local_rag_bedrock.js</code>, make sure to edit the `config.js` file and to provide a **knowledgeBaseId** (see [Deploy the sample to AWS](#deploy-the-sample-to-aws) section).
-> In addition, make sure you [set up the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) using an AWS IAM User or Role with sufficient AWS IAM permissions to invoke the Amazon Bedrock Foundation Model of your choice.
+> If you want to run <code>node 03_local_rag_bedrock.js</code>, make sure to edit the `config.js` file and to provide a **knowledgeBaseId** (see [Deploy the Backend](#deploy-the-backend) section).
+> If not already done, [set up the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) using an AWS IAM User or Role with sufficient IAM Permissions to invoke the Amazon Bedrock Foundation Model of your choice.
+
+**If you want to run the Frontend on your Local machine**, go to the `webapp` folder and install NPM dependencies:
+
+```bash
+npm install
+```
+
+If not already done, configure the AWS Amplify CLI on your local machine:
+
+```bash
+amplify configure
+```
+
+Then, initialize your own AWS Amplify application:
+
+```bash
+amplify init
+```
+
+Here is an example of initializing the AWS Amplify application (make sure the Distribution Directory Path is set to **dist**):
+
+- ? Enter a name for the environment dev<br />
+- ? Choose your default editor: Visual Studio Code<br />
+- ✔ Choose the type of app that you're building · javascript<br />
+- Please tell us about your project<br />
+- ? What javascript framework are you using react<br />
+- ? Source Directory Path:  src<br />
+- ? Distribution Directory Path: dist<br />
+- ? Build Command:  npm run-script build<br />
+- ? Start Command: npm run-script start<br />
+- Using default provider  awscloudformation<br />
+- ? Select the authentication method you want to use: AWS profile<br />
+
+Add Authentication to ensure only race engineers (i.e: faked users) can access cutting-edge features of your web app:
+
+```bash
+amplify add auth
+```
+
+Here is an example of adding authentication to the AWS Amplify application:
+
+Using service: Cognito, provided by: awscloudformation<br />
+The current configured provider is Amazon Cognito.<br /> 
+Do you want to use the default authentication and security configuration? Default configuration<br />
+Warning: you will not be able to edit these selections.<br />
+How do you want users to be able to sign in? Username<br />
+Do you want to configure advanced settings? No, I am done.<br />
+
+Once authentication added, open the [AWS IAM Roles Console](https://us-east-1.console.aws.amazon.com/iam/home#/roles), look for the `amplify-webapp-dev-[UNIQUE ID]-authRole` IAM role and attach the following policies (permissions):
+
+- arn:aws:iam::aws:policy/`AmazonBedrockFullAccess` (only used to ease usage of this sample, **do NOT use such policy in Production**)
+
+Lastly, push your local AWS Amplify application to ensure its configuration can be in sync with the Cloud one:
+
+```bash
+amplify push
+```
+When prompted if you want to continue, enter `Y`.
+
+Once your configuration pushed to the Cloud, you can run the Frontend on your Local machine:
+
+```bash
+npm run dev
+```
+
+The Frontend will be available on http://localhost:3000
 
 ### Deploy the sample to AWS
 
@@ -115,69 +184,133 @@ When NPM dependencies are installed, go to the `src` subfolder and execute the f
 Pricing varies per region and usage, so it isn't possible to predict exact costs for your usage.
 However, you can use the [AWS Pricing Calculator](https://calculator.aws/#/) for the resources below to get an estimate.
 
-⚠️ To avoid unnecessary costs, remember to delete ALL your AWS resources if it's no longer in use (cf. [Clean up](#clean-up) section).
+⚠️ To avoid unnecessary costs, remember to delete ALL AWS resources if it's no longer in use (cf. [Clean up](#clean-up) section).
 
-#### Deploy the sample
+#### Deploy the Backend
 
 1. Open a terminal and navigate to the `infra` folder.
-2. If not already done, [set up the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) using an AWS IAM User or Role with sufficient AWS IAM permissions to deploy the sample.
-3. Execute the following script into your terminal to deploy backend resources to AWS:
-```bash
-./cdk-deploy-to.sh [AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)
-```
-> [!NOTE]
-> Make sure to replace `[AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)` by your own AWS account Id and the region you.
+2. Install NPM dependencies:
 
-This will provision all AWS backend resources and build the search index based on the files found in the `./data` folder.
-
-The deployment process will take few minutes. Once deployed with success, go to the the `webapp` folder within your terminal and execute the following actions:
-1. Install NPM dependencies
 ```bash
 npm install
 ```
-2. Configure your AWS Amplify local environment to deploy this sample Frontend
+
+3. If not already done, [set up the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) using an AWS IAM User or Role with sufficient AWS IAM permissions to deploy the sample.
+
+4. Execute the following script into your terminal to deploy backend resources to AWS:
+
+```bash
+./cdk-deploy-to.sh [AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)
+```
+
+> [!NOTE]
+> Make sure to replace `[AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)` with your own AWS account Id and the AWS region targeted for your deployment.
+
+This will provision all AWS backend resources (Amazon Bedrock, Amazon S3, AWS Lambda) and build the search index (Amazon OpenSearch Serverless) based on the files found in the `./data` folder.
+
+When prompted if you want to deploy these changes, enter `y`.
+The deployment process will take few minutes.
+
+#### Deploy the Frontend
+
+Once the Backend deployed with success, go to the the `webapp` folder within your terminal and execute the following actions:
+
+1. Install NPM dependencies:
+
+```bash
+npm install
+```
+
+2. Open the `src/App.tsx` file and replace the `bedrock` section with the following one:
+<code>
+bedrock: {
+    region: aws_exports.aws_project_region,
+    // modelId: "meta.llama3-8b-instruct-v1:0",
+    agent: {
+        agentId: "[AMAZON BEDROCK AGENT ID]",
+        agentAliasId: "[AMAZON BEDROCK AGENT ALIAS ID]"
+    }
+},
+</code>
+
+> [!IMPORTANT]
+> Make sure to replace `[AMAZON BEDROCK AGENT ID]` and `[AMAZON BEDROCK AGENT ALIAS ID]` with Outputs values displayed in your terminal. Here is an example of Outputs:
+> > DeepF1GenAIStack.AgentAliasIdOutput = 7J3ABCDEJG<br />
+> > DeepF1GenAIStack.AgentIdOutput = HGYUARPLMN<br />
+
+3. If not already done, configure the AWS Amplify CLI on your local machine to deploy this sample Frontend:
+
 ```bash
 amplify configure
 ```
-3. Initialize your own AWS Amplify application
+
+3. Initialize your own AWS Amplify application:
+
 ```bash
 amplify init
 ```
-4. Add Authentication to ensure only race engineers (i.e: fake users) can access cutting-edge features of your web app
+
+4. Add Authentication to ensure only race engineers (i.e: faked users) can access cutting-edge features of your web app:
+
 ```bash
 amplify add auth
 ```
-5. Add Hosting to publish your web app on Internet
+
+Here is an example of adding authentication to the AWS Amplify application:
+
+Using service: Cognito, provided by: awscloudformation<br />
+The current configured provider is Amazon Cognito.<br /> 
+Do you want to use the default authentication and security configuration? Default configuration<br />
+Warning: you will not be able to edit these selections.<br />
+How do you want users to be able to sign in? Username<br />
+Do you want to configure advanced settings? No, I am done.<br />
+
+Once authentication added, open the [AWS IAM Roles Console](https://us-east-1.console.aws.amazon.com/iam/home#/roles), look for the `amplify-webapp-dev-[UNIQUE ID]-authRole` IAM role and attach the following policies (permissions):
+
+- arn:aws:iam::aws:policy/`AmazonBedrockFullAccess` (only used to ease usage of this sample, **do NOT use such policy in Production**)
+
+5. Add Hosting to publish your web app:
+
 ```bash
 amplify add hosting
 ```
-6. Publish your web app publicly
+
+5. Open the `src` subfolder and rename the `aws-exports.js` file with the following name: `aws-exports.ts`
+
+6. Publish your web app (on the Internet):
+
 ```bash
 amplify publish
 ```
-When prompted if you want to publish the frontend, enter `Y`.
 
-Once built and artifacts published, you can use the URL displayed in your terminal to open the _DeepF1_ Race AI Engineer web app and start chatting with the Foundation Model you specified (llama3 by default).
+When prompted if you want to publish the frontend, enter `Y`.
+The deployment process will take few minutes.
+
+Once built and artifacts published, you can use the public URL displayed in your terminal to open the _DeepF1_ Race AI Engineer web app and start chatting with the Foundation Model you specified (llama3 by default) which will leverage Agentic approach when required.
 
 #### Clean up
 
-To clean up all the AWS resources created by this sample:
+To clean up ALL AWS resources deployed by the sample:
 
 1. Go to the `infra` folder
 2. Execute the following script into your terminal to destroy all stacks deployed by AWS CDK:
+
 ```bash
 ./cdk-destroy-from.sh [AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)
 ```
-When prompted if you want to continue with the deletion of all stacks, enter `y`.
+
+When prompted if you want to delete all stacks, enter `y`.
 
 3. Go the the `webapp` folder within your terminal:
 4. Run the following command:
+
 ```bash
 amplify delete
 ```
+
 When prompted if you want to continue with the deletion of all the environments and local files created by Amplify CLI, enter `y`.
 
-ALL AWS resources provisioned using the [Deploy the sample](#deploy-the-sample) section will be deleted.
+ALL AWS resources provisioned via the [Deploy the sample](#deploy-the-sample) section will be deleted.
 
 ## Resources
 

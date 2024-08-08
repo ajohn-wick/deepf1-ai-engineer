@@ -65,8 +65,8 @@ function useAuthStatus() {
                     region: aws_exports.aws_project_region,
                     modelId: "meta.llama3-8b-instruct-v1:0",
                     // agent: {
-                    //     agentId: "",
-                    //     agentAliasId: ""
+                    //     agentId: "[AMAZON BEDROCK AGENT ID]",
+                    //     agentAliasId: "[AMAZON BEDROCK AGENT ALIAS ID]"
                     // }
                 },
                 ui: {
