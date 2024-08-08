@@ -221,8 +221,8 @@ Once the Backend deployed with success, go to the the `webapp` folder within you
 npm install
 ```
 
-2. Open the `src/App.tsx` file and replace the `bedrock` section with the following one:
-<code>
+2. Open the `src/App.tsx` file and replace the `bedrock` section with the following one:<br />
+```bash
 bedrock: {
     region: aws_exports.aws_project_region,
     // modelId: "meta.llama3-8b-instruct-v1:0",
@@ -231,7 +231,7 @@ bedrock: {
         agentAliasId: "[AMAZON BEDROCK AGENT ALIAS ID]"
     }
 },
-</code>
+```
 
 > [!IMPORTANT]
 > Make sure to replace `[AMAZON BEDROCK AGENT ID]` and `[AMAZON BEDROCK AGENT ALIAS ID]` with Outputs values displayed in your terminal. Here is an example of Outputs:
