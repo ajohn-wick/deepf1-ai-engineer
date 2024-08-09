@@ -29,7 +29,6 @@ export const agentQueryKB = async (event: any, context: any) => {
         logger.info('Received event:', JSON.stringify(event, null, 2));
         const { actionGroup, apiPath, httpMethod, inputText } = event;
 
-        // TO DO: Invoke our Formula 1 Knowledge Base to get relevant insights and share them with our Race Engineers
         // 1. Initialize the models
         const model = new ChatBedrockConverse({
             model: modelId,

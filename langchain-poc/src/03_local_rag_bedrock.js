@@ -1,4 +1,3 @@
-
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatBedrockConverse } from "@langchain/aws";
 import { AmazonKnowledgeBaseRetriever } from "@langchain/aws";

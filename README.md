@@ -131,7 +131,7 @@ Here is an example of initializing the AWS Amplify application (make sure the Di
 - Please tell us about your project<br />
 - ? What javascript framework are you using react<br />
 - ? Source Directory Path:  src<br />
-- ? Distribution Directory Path: dist<br />
+- ? Distribution Directory Path: **dist**<br />
 - ? Build Command:  npm run-script build<br />
 - ? Start Command: npm run-script start<br />
 - Using default provider  awscloudformation<br />
@@ -206,7 +206,7 @@ npm install
 > [!NOTE]
 > Make sure to replace `[AWS_ACCOUNT_ID] [AWS_REGION] [AWS_PROFILE_NAME](optional)` with your own AWS account Id and the AWS region targeted for your deployment.
 
-This will provision all AWS backend resources (Amazon Bedrock, Amazon S3, AWS Lambda) and build the search index (Amazon OpenSearch Serverless) based on the files found in the `./data` folder.
+This will provision all AWS backend resources (Amazon Bedrock, Amazon S3, AWS Lambda) and build the search index (Amazon OpenSearch Serverless) based on the files found in the `./data` subfolder.
 
 When prompted if you want to deploy these changes, enter `y`.
 The deployment process will take few minutes.
@@ -244,13 +244,27 @@ bedrock: {
 amplify configure
 ```
 
-3. Initialize your own AWS Amplify application:
+4. Initialize your own AWS Amplify application:
 
 ```bash
 amplify init
 ```
 
-4. Add Authentication to ensure only race engineers (i.e: faked users) can access cutting-edge features of your web app:
+Here is an example of initializing the AWS Amplify application (make sure the Distribution Directory Path is set to **dist**):
+
+- ? Enter a name for the environment dev<br />
+- ? Choose your default editor: Visual Studio Code<br />
+- ✔ Choose the type of app that you're building · javascript<br />
+- Please tell us about your project<br />
+- ? What javascript framework are you using react<br />
+- ? Source Directory Path:  src<br />
+- ? Distribution Directory Path: **dist**<br />
+- ? Build Command:  npm run-script build<br />
+- ? Start Command: npm run-script start<br />
+- Using default provider  awscloudformation<br />
+- ? Select the authentication method you want to use: AWS profile<br />
+
+5. Add Authentication to ensure only race engineers (i.e: faked users) can access cutting-edge features of your web app:
 
 ```bash
 amplify add auth
@@ -269,15 +283,15 @@ Once authentication added, open the [AWS IAM Roles Console](https://us-east-1.co
 
 - arn:aws:iam::aws:policy/`AmazonBedrockFullAccess` (only used to ease usage of this sample, **do NOT use such policy in Production**)
 
-5. Add Hosting to publish your web app:
+6. Add Hosting to publish your web app:
 
 ```bash
 amplify add hosting
 ```
 
-5. Open the `src` subfolder and rename the `aws-exports.js` file with the following name: `aws-exports.ts`
+7. Open the `src` subfolder and rename the `aws-exports.js` file with the following name: `aws-exports.ts`
 
-6. Publish your web app (on the Internet):
+8. Publish your web app (on the Internet):
 
 ```bash
 amplify publish
