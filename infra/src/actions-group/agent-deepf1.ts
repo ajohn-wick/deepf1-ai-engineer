@@ -53,7 +53,6 @@ export const agentQueryKB = async (event: any, context: any) => {
             combineDocsChain,
         });
 
-        // const response = await chain.invoke({ input: prompt });
         // 4. Generate the result
         const response = await chain.invoke({ input: inputText });
         logger.info('Received answer:', JSON.stringify(response, null, 2));
