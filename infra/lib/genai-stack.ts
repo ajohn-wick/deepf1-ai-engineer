@@ -183,10 +183,10 @@ export class DeepF1GenAIStack extends Stack {
     * Creates an Amazon Bedrock AgentActionGroup resource.
     *
     * @param kbId - The ID of the Amazon Bedrock knowledge base to use.
-    * @param framework - The framework for the agent action group. Possible values are 'langchain' or 'llamaindex'. Default is 'langchain'
+    * @param framework - The framework for the agent action group. Possible values are 'langchain' or 'llamaindex'.
     * @returns An Amazon Bedrock AgentActionGroup resource.
     */
-    private createBedrockAgentActionGroup(kbId: string, framework: string = 'langchain'): bedrock.AgentActionGroup {
+    private createBedrockAgentActionGroup(kbId: string, framework: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
             runtime: lambda.Runtime.NODEJS_20_X,
