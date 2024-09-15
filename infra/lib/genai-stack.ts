@@ -20,6 +20,7 @@ export class DeepF1GenAIStack extends Stack {
     private _kbS3Prefix: string = '';
     private _kbInstruction: string = '';
     private _agentInstruction: string = '';
+    private _llmFramework: string = '';
 
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props);
@@ -28,6 +29,7 @@ export class DeepF1GenAIStack extends Stack {
             this._kbS3Prefix = config['paths']['kb_s3_prefix'];
             this._kbInstruction = config['bedrock_instructions']['kb_instruction'];
             this._agentInstruction = config['bedrock_instructions']['agent_instruction'];
+            this._llmFramework = config['llm_framework'];
 
             const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
             new BucketDeployment(this, 'GenAIBucketDeployment', {
@@ -39,7 +41,7 @@ export class DeepF1GenAIStack extends Stack {
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
             const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
+            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId, this._llmFramework);
             agent.addActionGroups([actionGroup]);
 
             /***** INGESTION LAMBDA *****/
@@ -122,6 +124,14 @@ export class DeepF1GenAIStack extends Stack {
         this._agentInstruction = value;
     }
 
+    public get llmFramework(): string {
+        return this._llmFramework;
+    }
+
+    public set llmFramework(value: string) {
+        this._llmFramework = value;
+    }
+
     private getConfig(): any {
         return this.node.tryGetContext('config');
     }
@@ -169,14 +179,21 @@ export class DeepF1GenAIStack extends Stack {
         });
     }
 
-    private createBedrockAgentActionGroup(kbId: string): bedrock.AgentActionGroup {
+    /**
+    * Creates an Amazon Bedrock AgentActionGroup resource.
+    *
+    * @param kbId - The ID of the Amazon Bedrock knowledge base to use.
+    * @param framework - The framework for the agent action group. Possible values are 'langchain' or 'llamaindex'.
+    * @returns An Amazon Bedrock AgentActionGroup resource.
+    */
+    private createBedrockAgentActionGroup(kbId: string, framework: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
             runtime: lambda.Runtime.NODEJS_20_X,
             memorySize: 128,
             entry: join(
                 __dirname,
-                '../src/actions-group/agent-deepf1.ts'
+                `../src/actions-group/${framework}-agent-deepf1.ts`
             ),
             handler: 'handler',
             timeout: Duration.seconds(60),

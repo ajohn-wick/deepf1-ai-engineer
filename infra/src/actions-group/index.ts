@@ -1,1 +1,1 @@
-export * from './agent-deepf1';
+export * from './langchain-agent-deepf1';
