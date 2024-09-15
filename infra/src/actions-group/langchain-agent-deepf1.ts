@@ -23,7 +23,7 @@ const knowledgeBaseId = config.get('knowledgeBaseId');
 const modelId = config.get('modelId');
 const promptTemplate = config.get('promptTemplate');
 
-export const agentQueryKB = async (event: any, context: any) => {
+export const langchainAgentQueryKB = async (event: any, context: any) => {
     try {
         if (!event) throw new ValidationError('no event payload');
         logger.info('Received event:', JSON.stringify(event, null, 2));
@@ -84,7 +84,7 @@ export const agentQueryKB = async (event: any, context: any) => {
     }
 };
 
-export const handler = middy(agentQueryKB)
+export const handler = middy(langchainAgentQueryKB)
     .use(injectLambdaContext(logger))
     .use(captureLambdaHandler(tracer))
     .use(logMetrics(metrics));
