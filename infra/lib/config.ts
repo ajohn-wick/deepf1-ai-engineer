@@ -11,7 +11,8 @@ export type LambdaProps = {
     architecture: lambda.Architecture,
     tracing?: lambda.Tracing,
     bundling?: {
-        minify?: boolean
+        minify?: boolean,
+        nodeModules?: string[],
     },
     environment?: {
         [key: string]: any
@@ -28,5 +29,3 @@ export const lambdaConfig = {
     POWERTOOLS_TRACER_CAPTURE_RESPONSE: 'captureResult',
     POWERTOOLS_METRICS_NAMESPACE: 'DeepF1',
 };
-
-export const modelId: string = 'anthropic.claude-3-haiku-20240307-v1:0';

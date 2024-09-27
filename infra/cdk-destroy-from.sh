@@ -8,7 +8,7 @@ if [[ $# -ge 2 ]]; then
       AWS_PROFILE="default"
     fi
     shift; shift
-    npm exec cdk destroy "*" --profile $AWS_PROFILE
+    npx cdk destroy "*" --profile $AWS_PROFILE
     exit $?
 else
     echo 1>&2 "Make sure to provide the following arguments in order to use this script correctly:"

@@ -1,7 +1,7 @@
 import { Ollama } from "llamaindex";
 
 // 1. Initialize the model
-const model = new Ollama({ model: "llama3", topP: 0.9 });
+const model = new Ollama({ model: "llama3.2", topP: 0.9 });
 
 // 2. Invoke the model and print its response
 const prompt = `

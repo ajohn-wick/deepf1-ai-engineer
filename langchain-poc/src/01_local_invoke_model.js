@@ -2,7 +2,7 @@ import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
 
 // 1. Initialize the model
-const model = new ChatOllama({ model: "llama3", topP: 0.9 });
+const model = new ChatOllama({ model: "llama3.2", topP: 0.9 });
 
 // 2. Define a custom prompt
 const prompt = `

@@ -9,7 +9,7 @@ import {
 } from "llamaindex";
 
 // 1. Initialize the models
-Settings.llm = new Ollama({ model: "llama3", temperature: 0, topP: 0.9 });
+Settings.llm = new Ollama({ model: "llama3.2", temperature: 0, topP: 0.9 });
 Settings.embedModel = new OllamaEmbedding({ model: "nomic-embed-text" });
 
 // 2. Load F1 Data and split it into smaller chunks

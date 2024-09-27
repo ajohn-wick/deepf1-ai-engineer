@@ -11,8 +11,8 @@ if [[ $# -ge 2 ]]; then
     rm -rf node_modules
     npm install
     npm run build
-    npm exec cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_REGION --profile $AWS_PROFILE
-    npm exec cdk deploy "*" --profile $AWS_PROFILE
+    npx cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_REGION --profile $AWS_PROFILE
+    npx cdk deploy "*" --profile $AWS_PROFILE
     exit $?
 else
     echo 1>&2 "Make sure to provide the following arguments in order to use this script correctly:"

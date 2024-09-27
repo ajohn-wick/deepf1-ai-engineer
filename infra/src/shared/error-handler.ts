@@ -6,7 +6,7 @@ import { logger } from '@shared/logger';
 export function errorHandler(error: Error | unknown): APIGatewayProxyResult {
     console.error(error);
 
-    let errorMessage: string;
+    let errorMessage: string = '';
     let statusCode: number;
 
     if (error instanceof Error) {

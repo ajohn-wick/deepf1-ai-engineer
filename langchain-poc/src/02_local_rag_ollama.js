@@ -9,7 +9,7 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createRetrievalChain } from "langchain/chains/retrieval";
 
 // 1. Initialize the models
-const model = new ChatOllama({ model: "llama3", temperature: 0, topP: 0.9 });
+const model = new ChatOllama({ model: "llama3.2", temperature: 0, topP: 0.9 });
 const embeddings = new OllamaEmbeddings({ model: "nomic-embed-text" });
 
 // 2. Load F1 Data and split it into smaller chunks

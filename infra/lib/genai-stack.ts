@@ -12,7 +12,7 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 
-import { type LambdaProps, lambdaConfig, modelId } from './config';
+import { type LambdaProps, lambdaConfig } from './config';
 
 export class DeepF1GenAIStack extends Stack {
 
@@ -20,6 +20,7 @@ export class DeepF1GenAIStack extends Stack {
     private _kbS3Prefix: string = '';
     private _kbInstruction: string = '';
     private _agentInstruction: string = '';
+    private _llm: string = '';
     private _llmFramework: string = '';
 
     constructor(scope: Construct, id: string, props?: StackProps) {
@@ -29,6 +30,7 @@ export class DeepF1GenAIStack extends Stack {
             this._kbS3Prefix = config['paths']['kb_s3_prefix'];
             this._kbInstruction = config['bedrock_instructions']['kb_instruction'];
             this._agentInstruction = config['bedrock_instructions']['agent_instruction'];
+            this._llm = config['llm'];
             this._llmFramework = config['llm_framework'];
 
             const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
@@ -41,7 +43,7 @@ export class DeepF1GenAIStack extends Stack {
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
             const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId, this._llmFramework);
+            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
             agent.addActionGroups([actionGroup]);
 
             /***** INGESTION LAMBDA *****/
@@ -124,6 +126,14 @@ export class DeepF1GenAIStack extends Stack {
         this._agentInstruction = value;
     }
 
+    public get llm(): string {
+        return this._llm;
+    }
+
+    public set llm(value: string) {
+        this._llm = value;
+    }
+
     public get llmFramework(): string {
         return this._llmFramework;
     }
@@ -161,8 +171,6 @@ export class DeepF1GenAIStack extends Stack {
             knowledgeBase: kb,
             inclusionPrefixes: [this._kbS3Prefix],
             chunkingStrategy: bedrock.ChunkingStrategy.FIXED_SIZE,
-            maxTokens: 1000,
-            overlapPercentage: 20,
         });
     }
 
@@ -170,7 +178,7 @@ export class DeepF1GenAIStack extends Stack {
         return new bedrock.Agent(this, 'GenAIAgent', {
             name: `${this._appResourcePrefix}-agent`,
             aliasName: `${this._appResourcePrefix}-v1`,
-            foundationModel: bedrock.BedrockFoundationModel.ANTHROPIC_CLAUDE_HAIKU_V1_0,
+            foundationModel: bedrock.BedrockFoundationModel.ANTHROPIC_CLAUDE_3_5_SONNET_V1_0,
             instruction: this._agentInstruction,
             knowledgeBases: [kb],
             enableUserInput: true,
@@ -183,28 +191,28 @@ export class DeepF1GenAIStack extends Stack {
     * Creates an Amazon Bedrock AgentActionGroup resource.
     *
     * @param kbId - The ID of the Amazon Bedrock knowledge base to use.
-    * @param framework - The framework for the agent action group. Possible values are 'langchain' or 'llamaindex'.
     * @returns An Amazon Bedrock AgentActionGroup resource.
     */
-    private createBedrockAgentActionGroup(kbId: string, framework: string): bedrock.AgentActionGroup {
+    private createBedrockAgentActionGroup(kbId: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
             runtime: lambda.Runtime.NODEJS_20_X,
-            memorySize: 128,
+            memorySize: 1024,
             entry: join(
                 __dirname,
-                `../src/actions-group/${framework}-agent-deepf1.ts`
+                `../src/actions-group/${this._llmFramework}-agent-deepf1.ts`
             ),
-            handler: 'handler',
+            handler: `${this._llmFramework}Handler`,
             timeout: Duration.seconds(60),
             architecture: lambda.Architecture.ARM_64,
             tracing: lambda.Tracing.ACTIVE,
             bundling: {
                 minify: true,
+                nodeModules: ['@llamaindex/env', 'pgvector', 'pg'],
             },
             environment: {
                 KNOWLEDGE_BASE_ID: kbId,
-                BEDROCK_MODEL_ID: modelId,
+                BEDROCK_MODEL_ID: this._llm,
                 PROMPT_TEMPLATE: this._agentInstruction,
                 ...lambdaConfig,
             },
@@ -217,7 +225,7 @@ export class DeepF1GenAIStack extends Stack {
             ],
             resources: [
                 `arn:aws:bedrock:${this.region}:${this.account}:knowledge-base/${kbId}`,
-                `arn:aws:bedrock:${this.region}::foundation-model/${modelId}`
+                `arn:aws:bedrock:${this.region}::foundation-model/${this._llm}`
             ],
         }));
 
