@@ -5,7 +5,6 @@
     "infra": "bin/infra.js"
   },
   "scripts": {
-    "localbuild": "esbuild src/local/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js --watch",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
