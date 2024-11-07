@@ -27,11 +27,9 @@
     "baseUrl": ".",
     "paths": {
       "@actions-group/*": ["./src/actions-group/*"],
-      "@adapters/*": ["./src/adapters/*"],
       "@config": ["./src/config/index"],
       "@errors/*": ["./src/errors/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@use-cases/*": ["./src/use-cases/*"]
+      "@shared/*": ["./src/shared/*"]
     }
   },
   "exclude": [

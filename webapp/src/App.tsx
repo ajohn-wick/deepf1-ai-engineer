@@ -63,7 +63,7 @@ function useAuthStatus() {
                 },
                 bedrock: {
                     region: aws_exports.aws_project_region,
-                    modelId: "meta.llama3-2-3b-instruct-v1:0",
+                    modelId: "us.meta.llama3-2-3b-instruct-v1:0",
                     // agent: {
                     //     agentId: "[AMAZON BEDROCK AGENT ID]",
                     //     agentAliasId: "[AMAZON BEDROCK AGENT ALIAS ID]"

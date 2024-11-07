@@ -6,10 +6,9 @@ import { Stack, StackProps, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
 
-import { type LambdaProps, lambdaConfig } from './config';
+import { lambdaConfig } from './config';
 
 export class DeepF1LocalStack extends Stack {
 
@@ -25,10 +24,9 @@ export class DeepF1LocalStack extends Stack {
             this._kbS3Prefix = config['paths']['kb_s3_prefix'];
             this._llmFramework = config['llm_framework'];
 
-            const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
+            // const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
             // TODO: Upload F1 data to our local S3 bucket using the awslocal CLI
-            // const actionGroup = this.createBedrockAgentActionGroup("KBID123456");
-
+            // const actionGroup = this.createBedrockAgentActionGroup("QWERTY123");
         }
     }
 
@@ -81,22 +79,26 @@ export class DeepF1LocalStack extends Stack {
     * @returns An Amazon Bedrock AgentActionGroup resource.
     */
     private createBedrockAgentActionGroup(kbId: string) {
-        const actionGroupProps: LambdaProps = {
+        const hotReloadingBucket = s3.Bucket.fromBucketName(
+            this,
+            "HotReloadingBucket",
+            "hot-reload"
+        );
+        const actionGroupProps: lambda.FunctionProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
             runtime: lambda.Runtime.NODEJS_20_X,
             memorySize: 1024,
-            entry: join(
-                __dirname,
-                `../src/actions-group/${this._llmFramework}-agent-deepf1.ts`
+            code: lambda.Code.fromBucket(
+                hotReloadingBucket,
+                join(
+                    __dirname,
+                    `../src/actions-group/${this._llmFramework}-agent-deepf1.ts`
+                )
             ),
             handler: `${this._llmFramework}Handler`,
             timeout: Duration.seconds(60),
             architecture: lambda.Architecture.ARM_64,
             tracing: lambda.Tracing.ACTIVE,
-            bundling: {
-                minify: true,
-                nodeModules: ['@llamaindex/env', 'pgvector', 'pg'],
-            },
             environment: {
                 KNOWLEDGE_BASE_ID: kbId,
                 BEDROCK_MODEL_ID: this._llm,
@@ -104,7 +106,7 @@ export class DeepF1LocalStack extends Stack {
                 ...lambdaConfig,
             },
         };
-        const actionGroupLambda: NodejsFunction = this.createNodeJSLambdaFn(actionGroupProps);
+        const actionGroupLambda: lambda.Function = this.createNodeJSLambdaFn(actionGroupProps);
         actionGroupLambda.addToRolePolicy(new PolicyStatement({
             actions: [
                 'bedrock:Retrieve',
@@ -117,7 +119,8 @@ export class DeepF1LocalStack extends Stack {
         }));
     }
 
-    private createNodeJSLambdaFn(lambdaProps: LambdaProps): NodejsFunction {
-        return new NodejsFunction(this, lambdaProps.functionName.replace('-', '').toUpperCase(), lambdaProps);
+    private createNodeJSLambdaFn(lambdaProps: lambda.FunctionProps): lambda.Function {
+        const fnName = lambdaProps.functionName || "deepf1-localstack-lambda";
+        return new lambda.Function(this, fnName.replace('-', '').toUpperCase(), lambdaProps);
     }
 }

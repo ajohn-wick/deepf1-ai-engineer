@@ -33,59 +33,18 @@ export class DeepF1GenAIStack extends Stack {
             this._llm = config['llm'];
             this._llmFramework = config['llm_framework'];
 
-            const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
-            new BucketDeployment(this, 'GenAIBucketDeployment', {
-                sources: [Source.asset(join(__dirname, '../data/'))],
-                destinationBucket: kbBucket,
-                destinationKeyPrefix: this._kbS3Prefix,
-            });
+            // const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
+            // new BucketDeployment(this, 'GenAIBucketDeployment', {
+            //     sources: [Source.asset(join(__dirname, '../data/'))],
+            //     destinationBucket: kbBucket,
+            //     destinationKeyPrefix: this._kbS3Prefix,
+            // });
 
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
-            const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
+            // const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
-            agent.addActionGroups([actionGroup]);
-
-            /***** INGESTION LAMBDA *****/
-            const ingestionProps: LambdaProps = {
-                functionName: `${this._appResourcePrefix}-ingestion`,
-                runtime: lambda.Runtime.NODEJS_20_X,
-                memorySize: 1024,
-                entry: join(
-                    __dirname,
-                    '../src/adapters/primary/ingestion-lambda/ingestion-lambda.adapter.ts'
-                ),
-                handler: 'handler',
-                timeout: Duration.seconds(600),
-                architecture: lambda.Architecture.ARM_64,
-                tracing: lambda.Tracing.ACTIVE,
-                bundling: {
-                    minify: true,
-                },
-                environment: {
-                    DATA_SOURCE_ID: dataSource.dataSourceId,
-                    KNOWLEDGE_BASE_ID: kb.knowledgeBaseId,
-                    ...lambdaConfig,
-                },
-            };
-            const ingestionLambda: NodejsFunction = this.createNodeJSLambdaFn(ingestionProps);
-            // Create an s3 event source for objects being added, modified or removed
-            kbBucket.addEventNotification(
-                s3.EventType.OBJECT_CREATED_PUT,
-                new LambdaDestination(ingestionLambda)
-            );
-            kbBucket.addEventNotification(
-                s3.EventType.OBJECT_REMOVED,
-                new LambdaDestination(ingestionLambda)
-            );
-            // Ensure that the lambda function can start a data ingestion job
-            ingestionLambda.addToRolePolicy(
-                new PolicyStatement({
-                    actions: ['bedrock:StartIngestionJob'],
-                    resources: [kb.knowledgeBaseArn],
-                })
-            );
-            /***** END INGESTION LAMBDA *****/
+            // const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
+            // agent.addActionGroups([actionGroup]);
 
             new CfnOutput(this, 'AgentIdOutput', {
                 value: agent.agentId,

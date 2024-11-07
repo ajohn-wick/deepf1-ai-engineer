@@ -1,4 +1,4 @@
 export const config = {
     "knowledgeBaseId": "",
-    "modelId": "meta.llama3-8b-instruct-v1:0"
+    "modelId": "us.meta.llama3-2-3b-instruct-v1:0"
 };

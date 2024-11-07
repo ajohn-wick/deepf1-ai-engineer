@@ -2,7 +2,7 @@ import { BedrockRuntimeClient, ConverseStreamCommand } from "@aws-sdk/client-bed
 import { Config } from "./models";
 
 export class ModelClient {
-    #bedrockClient: BedrockRuntimeClient
+    #bedrockClient: BedrockRuntimeClient;
     config: Config;
 
     constructor(config: Config, credentials: any) {
