@@ -6,7 +6,7 @@
         "alias": "string",
         "version": "string"
     },
-    "inputText": "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?",
+    "inputText": "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?",
     "sessionId": "string",
     "actionGroup": "string",
     "apiPath": "string",
@@ -15,7 +15,7 @@
         {
             "name": "query",
             "type": "string",
-            "value": "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?"
+            "value": "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?"
         }
     ],
     "requestBody": {
