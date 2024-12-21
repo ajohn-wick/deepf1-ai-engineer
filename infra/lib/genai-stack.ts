@@ -5,7 +5,6 @@ import { Stack, StackProps, Duration, RemovalPolicy, CfnOutput } from 'aws-cdk-l
 
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import { LambdaDestination } from 'aws-cdk-lib/aws-s3-notifications';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { bedrock } from '@cdklabs/generative-ai-cdk-constructs';
 import * as lambda from "aws-cdk-lib/aws-lambda";
@@ -43,8 +42,8 @@ export class DeepF1GenAIStack extends Stack {
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
             this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            // const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
-            // agent.addActionGroups([actionGroup]);
+            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
+            agent.addActionGroups([actionGroup]);
 
             new CfnOutput(this, 'AgentIdOutput', {
                 value: agent.agentId,
