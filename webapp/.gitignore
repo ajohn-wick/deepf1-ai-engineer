@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+package-lock.json
 dist
 dist-ssr
 *.local
@@ -36,6 +37,7 @@ build/
 dist/
 node_modules/
 aws-exports.js
+aws-exports.ts
 awsconfiguration.json
 amplifyconfiguration.json
 amplifyconfiguration.dart

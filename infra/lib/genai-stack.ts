@@ -33,15 +33,15 @@ export class DeepF1GenAIStack extends Stack {
             this._llm = config['llm'];
             this._llmFramework = config['llm_framework'];
 
-            // const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
-            // new BucketDeployment(this, 'GenAIBucketDeployment', {
-            //     sources: [Source.asset(join(__dirname, '../data/'))],
-            //     destinationBucket: kbBucket,
-            //     destinationKeyPrefix: this._kbS3Prefix,
-            // });
+            const kbBucket: s3.Bucket = this.createBucket(`${this._appResourcePrefix}-bedrock-kb`);
+            new BucketDeployment(this, 'GenAIBucketDeployment', {
+                sources: [Source.asset(join(__dirname, '../data/'))],
+                destinationBucket: kbBucket,
+                destinationKeyPrefix: this._kbS3Prefix,
+            });
 
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
-            // const dataSource: bedrock.S3DataSource = this.createBedrockKBDataSource(kb, kbBucket);
+            this.createBedrockKBDataSource(kb, kbBucket);
             const agent: bedrock.Agent = this.createBedrockAgent(kb);
             // const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
             // agent.addActionGroups([actionGroup]);
