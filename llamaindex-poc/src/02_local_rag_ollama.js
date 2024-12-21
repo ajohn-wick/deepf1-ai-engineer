@@ -53,6 +53,6 @@ const queryEngine = vectorStore.asQueryEngine({
     similarityTopK: 10
 });
 const response = await queryEngine.query({
-    query: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?",
+    query: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?",
 });
 console.log(response.message.content);
