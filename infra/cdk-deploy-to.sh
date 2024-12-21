@@ -14,11 +14,11 @@ if [[ $# -ge 3 ]]; then
     npm run build
 
     if [ "$DEV_ENV" = "local" ]; then
-        echo "Running in local development environment"
+        echo "Deploying in a local development environment"
         npx cdklocal bootstrap aws://000000000000/us-east-1
         npx cdklocal deploy "*"
     else
-        echo "Running in non-local environment: $DEV_ENV"
+        echo "Deploying on a non-local environment: $DEV_ENV"
         npx cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_REGION --profile $AWS_PROFILE
         npx cdk deploy "*" --profile $AWS_PROFILE
     fi
