@@ -137,7 +137,7 @@ export class DeepF1GenAIStack extends Stack {
         return new bedrock.Agent(this, 'GenAIAgent', {
             name: `${this._appResourcePrefix}-agent`,
             aliasName: `${this._appResourcePrefix}-v1`,
-            foundationModel: bedrock.BedrockFoundationModel.ANTHROPIC_CLAUDE_3_5_SONNET_V1_0,
+            foundationModel: bedrock.BedrockFoundationModel.ANTHROPIC_CLAUDE_3_5_HAIKU_V1_0,
             instruction: this._agentInstruction,
             knowledgeBases: [kb],
             enableUserInput: true,
@@ -155,7 +155,7 @@ export class DeepF1GenAIStack extends Stack {
     private createBedrockAgentActionGroup(kbId: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
-            runtime: lambda.Runtime.NODEJS_20_X,
+            runtime: lambda.Runtime.NODEJS_22_X,
             memorySize: 1024,
             entry: join(
                 __dirname,
