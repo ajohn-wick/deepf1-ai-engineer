@@ -155,7 +155,7 @@ export class DeepF1GenAIStack extends Stack {
     private createBedrockAgentActionGroup(kbId: string): bedrock.AgentActionGroup {
         const actionGroupProps: LambdaProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
-            runtime: lambda.Runtime.NODEJS_22_X,
+            runtime: lambda.Runtime.NODEJS_20_X,
             memorySize: 1024,
             entry: join(
                 __dirname,

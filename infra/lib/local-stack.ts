@@ -86,7 +86,7 @@ export class DeepF1LocalStack extends Stack {
         );
         const actionGroupProps: lambda.FunctionProps = {
             functionName: `${this._appResourcePrefix}-action-group`,
-            runtime: lambda.Runtime.NODEJS_22_X,
+            runtime: lambda.Runtime.NODEJS_20_X,
             memorySize: 1024,
             code: lambda.Code.fromBucket(
                 hotReloadingBucket,
