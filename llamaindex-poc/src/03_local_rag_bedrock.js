@@ -22,7 +22,6 @@ if (modelId !== "" && knowledgeBaseId !== "") {
             sessionToken: process.env.AWS_SESSION_TOKEN,
         },
     });
-    Settings.embedModel = new OllamaEmbedding({ model: "nomic-embed-text" }); // Required otherwise asking for an OPENAI_API_KEY env variable
 
     // 2. Initialize the Bedrock Knowledge Base retriever
     const vectorStore = new AmazonKnowledgeBaseRetriever({
