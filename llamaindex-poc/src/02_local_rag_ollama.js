@@ -27,7 +27,7 @@ const splitter = new SentenceSplitter({
     separator: "\n",
     chunkSize: 512,
     chunkOverlap: 200
-})
+});
 const deepF1Nodes = splitter.getNodesFromDocuments(deepF1Docs);
 
 // 3. Put the documents into a vector store
@@ -50,7 +50,7 @@ Your goal is to analyze this information and offer strategic recommendations to 
 
 // 5. Invoke the model and print its response
 const queryEngine = vectorStore.asQueryEngine({
-    similarityTopK: 10
+    similarityTopK: 3
 });
 const response = await queryEngine.query({
     query: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?",

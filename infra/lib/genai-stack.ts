@@ -41,18 +41,18 @@ export class DeepF1GenAIStack extends Stack {
 
             const kb: bedrock.KnowledgeBase = this.createBedrockKB();
             this.createBedrockKBDataSource(kb, kbBucket);
-            const agent: bedrock.Agent = this.createBedrockAgent(kb);
-            const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
-            agent.addActionGroups([actionGroup]);
+            // const agent: bedrock.Agent = this.createBedrockAgent(kb);
+            // const actionGroup: bedrock.AgentActionGroup = this.createBedrockAgentActionGroup(kb.knowledgeBaseId);
+            // agent.addActionGroups([actionGroup]);
 
-            new CfnOutput(this, 'AgentIdOutput', {
-                value: agent.agentId,
-                exportName: 'AgentIdOutput',
-            });
-            new CfnOutput(this, 'AgentAliasIdOutput', {
-                value: agent.aliasId || '',
-                exportName: 'AgentAliasIdOutput',
-            });
+            // new CfnOutput(this, 'AgentIdOutput', {
+            //     value: agent.agentId,
+            //     exportName: 'AgentIdOutput',
+            // });
+            // new CfnOutput(this, 'AgentAliasIdOutput', {
+            //     value: agent.aliasId || '',
+            //     exportName: 'AgentAliasIdOutput',
+            // });
         }
     }
 
