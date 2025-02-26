@@ -56,5 +56,5 @@ const chain = await createRetrievalChain({
 });
 
 // 5. Invoke the model and print its response
-const response = await chain.invoke({ input: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?" });
+const response = await chain.invoke({ input: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?" });
 console.log(response['answer']);

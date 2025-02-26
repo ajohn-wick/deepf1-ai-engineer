@@ -19,11 +19,11 @@ paths:
               properties:
                 query:
                   type: string
-                  example: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?
+                  example: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?
             examples:
               POST Query:
                 value:
-                  query: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?
+                  query: Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?
       responses:
         '200':
           description: 'OK'

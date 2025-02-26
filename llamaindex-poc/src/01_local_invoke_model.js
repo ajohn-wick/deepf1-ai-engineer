@@ -13,7 +13,7 @@ Your main goal is to provide useful information to users.
 const response = await model.chat({
     messages: [
       { role: "system", content: prompt },
-      { role: "user", content: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?" }
+      { role: "user", content: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?" }
     ],
     stream: false
   });

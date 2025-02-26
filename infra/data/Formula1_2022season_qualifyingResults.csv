@@ -40,7 +40,7 @@ Saudi Arabia;18;27;Nico Hulkenberg;Aston Martin Aramco Mercedes;1:30.543;;;10;20
 Saudi Arabia;19;6;Nicholas Latifi;Williams Mercedes;1:31.817;;;4;2022
 Saudi Arabia;NC;22;Yuki Tsunoda;AlphaTauri RBPT;DNS;;;2;2022
 Australia;1;16;Charles Leclerc;Ferrari;1:18.881;1:18.606;1:17.868;21;2022
-Australia;2;1;Max Verstappen;Red Bull Racing RBPT;0,06087963;1:18.611;1:18.154;21;2022
+Australia;2;1;Max Verstappen;Red Bull Racing RBPT;0.06087963;1:18.611;1:18.154;21;2022
 Australia;3;11;Sergio Perez;Red Bull Racing RBPT;1:18.834;1:18.340;1:18.240;21;2022
 Australia;4;4;Lando Norris;McLaren Mercedes;1:19.280;1:19.066;1:18.703;20;2022
 Australia;5;44;Lewis Hamilton;Mercedes;1:19.401;1:19.106;1:18.825;28;2022
@@ -403,7 +403,7 @@ Brazil;1;20;Kevin Magnussen;Haas Ferrari;1:13.954;1:11.410;1:11.674;26;2022
 Brazil;2;1;Max Verstappen;Red Bull Racing RBPT;1:13.625;1:10.881;1:11.877;23;2022
 Brazil;3;63;George Russell;Mercedes;1:14.427;1:11.318;1:12.059;24;2022
 Brazil;4;4;Lando Norris;McLaren Mercedes;1:13.106;1:11.377;1:12.263;25;2022
-Brazil;5;55;Carlos Sainz;Ferrari;0,059259259;1:10.890;1:12.357;24;2022
+Brazil;5;55;Carlos Sainz;Ferrari;0.059259259;1:10.890;1:12.357;24;2022
 Brazil;6;31;Esteban Ocon;Alpine Renault;1:14.663;1:11.587;1:12.425;22;2022
 Brazil;7;14;Fernando Alonso;Alpine Renault;1:13.542;1:11.394;1:12.504;21;2022
 Brazil;8;44;Lewis Hamilton;Mercedes;1:13.403;1:11.539;1:12.611;25;2022

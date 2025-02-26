@@ -22,7 +22,6 @@ if (modelId !== "" && knowledgeBaseId !== "") {
             sessionToken: process.env.AWS_SESSION_TOKEN,
         },
     });
-    Settings.embedModel = new OllamaEmbedding({ model: "nomic-embed-text" }); // Required otherwise asking for an OPENAI_API_KEY env variable
 
     // 2. Initialize the Bedrock Knowledge Base retriever
     const vectorStore = new AmazonKnowledgeBaseRetriever({
@@ -47,7 +46,7 @@ Your goal is to analyze this information and offer strategic recommendations to 
     const queryEngine = new RetrieverQueryEngine(vectorStore);
 
     // 4. Generate the result
-    const response = await queryEngine.query({ query: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2023 Race?" });
+    const response = await queryEngine.query({ query: "Which F1 Driver set the fastest lap time during the Formula 1 Monaco 2024 Race?" });
     console.log(response.message.content);
 }
 else {
